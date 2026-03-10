@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WordPress 更新マニュアル｜SWELL対応 完全版</title>
+<style>
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;
+  font-size:15px;
+  line-height:1.75;
+  color:#1a1a2e;
+  background:#f0f2f8;
+}
+
+/* ============================================
+   VARIABLES
+   ============================================ */
+:root{
+  --blue:#2271b1;
+  --blue-dark:#135e96;
+  --blue-light:#e8f2fc;
+  --green:#00a32a;
+  --green-light:#e8f9ee;
+  --orange:#d63638;
+  --orange-light:#fef2f2;
+  --yellow:#dba617;
+  --yellow-light:#fef9ec;
+  --gray-50:#fafafa;
+  --gray-100:#f6f7f7;
+  --gray-200:#dcdcde;
+  --gray-400:#a7aaad;
+  --gray-600:#646970;
+  --gray-800:#3c434a;
+  --gray-900:#1e1e1e;
+  --radius:10px;
+  --shadow:0 2px 12px rgba(0,0,0,0.08);
+  --shadow-lg:0 6px 24px rgba(0,0,0,0.12);
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.header{
+  background:linear-gradient(135deg,#1a1a4e 0%,#2271b1 60%,#0ea5e9 100%);
+  padding:56px 24px 48px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.header::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.header-inner{position:relative;z-index:1;}
+.header-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,0.15);
+  border:1px solid rgba(255,255,255,0.3);
+  border-radius:20px;padding:5px 16px;
+  font-size:12px;color:#fff;letter-spacing:0.5px;margin-bottom:20px;
+}
+.header h1{
+  font-size:clamp(22px,4vw,36px);font-weight:800;color:#fff;
+  margin-bottom:10px;letter-spacing:-1px;
+}
+.header p{font-size:14px;color:rgba(255,255,255,0.8);margin-bottom:20px;}
+.header-tags{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;}
+.header-tag{
+  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);
+  border-radius:6px;padding:3px 12px;font-size:12px;color:rgba(255,255,255,0.9);
+}
+
+/* ============================================
+   CONTAINER
+   ============================================ */
+.container{max-width:980px;margin:0 auto;padding:0 16px;}
+
+/* ============================================
+   TOC
+   ============================================ */
+.toc{
+  background:#fff;border-radius:var(--radius);
+  box-shadow:var(--shadow);margin:28px auto;padding:24px 28px;max-width:980px;
+}
+.toc-head{
+  display:flex;align-items:center;gap:10px;
+  font-size:15px;font-weight:700;color:var(--blue);margin-bottom:20px;
+}
+/* グループレイアウト */
+.toc-groups{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;
+}
+.toc-group{
+  border:1px solid var(--gray-200);border-radius:9px;overflow:hidden;
+}
+.toc-group-label{
+  background:var(--blue);color:#fff;
+  font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;
+  padding:5px 12px;
+}
+.toc-group-label.swell{
+  background:linear-gradient(90deg,#7c3aed,#a855f7);
+}
+.toc-group-label.qa{
+  background:linear-gradient(90deg,#0f5132,#198754);
+}
+.toc-section{
+  border-bottom:1px solid var(--gray-100);
+}
+.toc-section:last-child{border-bottom:none;}
+/* メイン項目 */
+.toc-item{
+  display:flex;align-items:center;gap:10px;
+  text-decoration:none;color:var(--gray-800);
+  padding:9px 12px;font-size:13px;font-weight:600;
+  transition:all 0.15s;
+  background:#fff;
+}
+.toc-item:hover{background:var(--blue-light);color:var(--blue);}
+.toc-num{
+  width:24px;height:24px;background:var(--blue);color:#fff;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;flex-shrink:0;
+}
+.toc-num.swell{background:linear-gradient(135deg,#7c3aed,#a855f7);}
+.toc-num.qa{background:linear-gradient(135deg,#0f5132,#198754);}
+/* サブ項目 */
+.toc-subs{
+  display:flex;flex-direction:column;gap:0;
+  border-top:1px solid var(--gray-100);
+  background:var(--gray-50);
+}
+.toc-sub{
+  display:flex;align-items:center;gap:8px;
+  text-decoration:none;color:var(--gray-600);
+  padding:6px 12px 6px 20px;font-size:12px;
+  transition:all 0.15s;
+  border-bottom:1px solid var(--gray-100);
+}
+.toc-sub:last-child{border-bottom:none;}
+.toc-sub::before{
+  content:'└';color:var(--gray-400);font-size:11px;flex-shrink:0;
+}
+.toc-sub:hover{background:var(--blue-light);color:var(--blue);}
+.toc-sub:hover::before{color:var(--blue);}
+
+/* ============================================
+   SECTION
+   ============================================ */
+.sec{
+  background:#fff;border-radius:var(--radius);
+  box-shadow:var(--shadow);margin:20px auto;overflow:hidden;max-width:980px;
+}
+.sec-head{
+  padding:22px 28px;
+  background:linear-gradient(90deg,var(--blue-dark),#2f86cc);
+  display:flex;align-items:flex-start;gap:14px;
+}
+.sec-head.swell-sec{
+  background:linear-gradient(90deg,#7c3aed,#a855f7);
+}
+.sec-num{
+  width:40px;height:40px;min-width:40px;
+  background:rgba(255,255,255,0.2);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:17px;font-weight:800;color:#fff;
+}
+.sec-title-wrap{}
+.sec-label{font-size:11px;color:rgba(255,255,255,0.75);letter-spacing:0.5px;margin-bottom:2px;}
+.sec-title{font-size:19px;font-weight:700;color:#fff;}
+.sec-body{padding:28px 32px;}
+@media(max-width:640px){.sec-body{padding:20px 16px;}}
+
+/* ============================================
+   SWELL BADGE
+   ============================================ */
+.swell-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  background:linear-gradient(90deg,#7c3aed,#a855f7);
+  color:#fff;border-radius:5px;padding:2px 10px;font-size:11px;font-weight:700;
+  vertical-align:middle;margin-left:6px;
+}
+
+/* ============================================
+   STEPS
+   ============================================ */
+.steps{list-style:none;counter-reset:step;}
+.step-item{
+  display:flex;gap:14px;margin-bottom:22px;align-items:flex-start;
+  counter-increment:step;
+}
+.step-item:last-child{margin-bottom:0;}
+.step-n{
+  width:34px;height:34px;min-width:34px;
+  background:var(--blue);color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;margin-top:2px;
+}
+.step-content{}
+.step-title{font-size:15px;font-weight:700;margin-bottom:5px;}
+.step-desc{font-size:14px;color:var(--gray-600);line-height:1.65;}
+
+/* ============================================
+   CALLOUTS
+   ============================================ */
+.callout{
+  display:flex;gap:12px;padding:14px 16px;
+  border-radius:8px;margin:14px 0;font-size:14px;
+}
+.callout.info{background:var(--blue-light);border-left:4px solid var(--blue);}
+.callout.warn{background:var(--yellow-light);border-left:4px solid var(--yellow);}
+.callout.ok{background:var(--green-light);border-left:4px solid var(--green);}
+.callout.danger{background:var(--orange-light);border-left:4px solid var(--orange);}
+.callout-ico{font-size:18px;margin-top:1px;flex-shrink:0;}
+.callout-body{}
+.callout-body strong{display:block;margin-bottom:3px;font-size:13px;}
+.callout-body p,.callout-body span{font-size:13px;color:var(--gray-800);}
+
+/* ============================================
+   UI CHIPS / BUTTONS
+   ============================================ */
+.chip{
+  display:inline-block;padding:2px 10px;border-radius:4px;
+  font-size:12px;font-weight:700;vertical-align:middle;line-height:1.6;
+}
+.chip.blue{background:var(--blue);color:#fff;}
+.chip.green{background:var(--green);color:#fff;}
+.chip.gray{background:var(--gray-600);color:#fff;}
+.chip.red{background:var(--orange);color:#fff;}
+.chip.purple{background:#7c3aed;color:#fff;}
+.chip.outline{background:var(--gray-100);border:1px solid var(--gray-200);color:var(--gray-800);}
+.path{
+  display:inline-flex;align-items:center;gap:4px;
+  background:var(--gray-100);border:1px solid var(--gray-200);
+  border-radius:5px;padding:3px 10px;font-size:12px;color:var(--gray-600);
+}
+.path-sep{color:var(--gray-400);}
+kbd{
+  display:inline-block;background:var(--gray-100);border:1px solid var(--gray-200);
+  border-bottom:3px solid var(--gray-200);border-radius:4px;
+  padding:1px 8px;font-size:12px;font-family:monospace;color:var(--gray-800);
+}
+
+/* ============================================
+   DIVIDER
+   ============================================ */
+.divider{border:none;border-top:1px solid var(--gray-200);margin:24px 0;}
+
+/* ============================================
+   SUB SECTION
+   ============================================ */
+.sub{margin-bottom:30px;}
+.sub:last-child{margin-bottom:0;}
+.sub-title{
+  font-size:15px;font-weight:700;color:var(--blue-dark);
+  margin-bottom:14px;padding-bottom:8px;
+  border-bottom:2px solid var(--blue-light);
+  display:flex;align-items:center;gap:8px;
+}
+
+/* ============================================
+   SCREEN MOCKUP (CSS-only)
+   ============================================ */
+.mock{
+  background:#f4f6f8;border:1px solid #d0d5dd;
+  border-radius:10px;overflow:hidden;margin:14px 0;font-size:13px;
+}
+.mock-bar{
+  background:#fff;border-bottom:1px solid #e5e7eb;
+  padding:8px 14px;display:flex;align-items:center;gap:6px;font-size:12px;
+  color:var(--gray-600);
+}
+.mock-bar .mock-dots{display:flex;gap:5px;}
+.mock-bar .mock-dot{width:10px;height:10px;border-radius:50%;}
+.mock-bar .mock-dot.r{background:#ff5f56;}
+.mock-bar .mock-dot.y{background:#ffbd2e;}
+.mock-bar .mock-dot.g{background:#27c93f;}
+.mock-bar .mock-url{
+  flex:1;background:var(--gray-100);border-radius:4px;
+  padding:3px 10px;font-size:11px;color:var(--gray-400);margin:0 8px;
+}
+.mock-body{padding:14px 16px;}
+
+/* WP Admin Sidebar mock */
+.admin-layout{display:flex;gap:0;min-height:120px;}
+.admin-sidebar{
+  width:130px;min-width:130px;background:#1d2327;padding:12px 0;
+}
+.admin-sidebar-item{
+  padding:7px 14px;font-size:11px;color:#c3c4c7;cursor:pointer;
+  display:flex;align-items:center;gap:6px;
+}
+.admin-sidebar-item:hover,.admin-sidebar-item.active{background:#2271b1;color:#fff;}
+.admin-sidebar-item.active{border-left:3px solid #72aee6;}
+.admin-main{flex:1;background:#f0f0f1;padding:14px;}
+
+/* Editor mock */
+.editor-mock{background:#fff;border:1px solid #dcdcde;border-radius:8px;overflow:hidden;}
+.editor-topbar{
+  background:#1d2327;padding:8px 14px;display:flex;
+  align-items:center;justify-content:space-between;
+}
+.editor-topbar-left{display:flex;align-items:center;gap:8px;}
+.editor-wplogo{
+  width:24px;height:24px;background:#2271b1;border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:10px;font-weight:700;
+}
+.editor-topbar-right{display:flex;align-items:center;gap:8px;}
+.editor-content{padding:20px 24px;}
+.editor-title-input{
+  width:100%;border:none;border-bottom:1px solid #dcdcde;
+  padding:8px 0;font-size:18px;color:#1e1e1e;outline:none;margin-bottom:16px;
+  background:transparent;
+}
+.editor-block{
+  border:1px dashed #dcdcde;border-radius:6px;
+  padding:10px 14px;color:var(--gray-400);font-size:13px;margin-bottom:8px;
+  cursor:pointer;
+}
+.editor-block:hover{border-color:#2271b1;color:var(--gray-600);}
+.editor-block.has-content{border-color:#e5e7eb;color:var(--gray-800);}
+.editor-toolbar{
+  display:flex;gap:4px;padding:6px 10px;
+  background:var(--gray-100);border-radius:6px;margin-bottom:10px;flex-wrap:wrap;
+}
+.editor-tb-btn{
+  padding:4px 8px;border-radius:4px;font-size:12px;
+  border:1px solid var(--gray-200);background:#fff;color:var(--gray-800);cursor:pointer;
+}
+.editor-tb-btn:hover{background:var(--blue-light);}
+.editor-sidebar{
+  width:260px;min-width:260px;background:#fff;
+  border-left:1px solid #dcdcde;padding:14px;
+}
+.sidebar-tab{
+  display:flex;gap:0;border-bottom:1px solid #dcdcde;margin-bottom:14px;
+}
+.sidebar-tab-item{
+  padding:7px 14px;font-size:12px;cursor:pointer;
+  border-bottom:2px solid transparent;color:var(--gray-600);
+}
+.sidebar-tab-item.active{
+  border-bottom-color:var(--blue);color:var(--blue);font-weight:600;
+}
+.sidebar-section{margin-bottom:16px;}
+.sidebar-section-title{
+  font-size:11px;font-weight:700;color:var(--gray-600);
+  letter-spacing:0.5px;text-transform:uppercase;margin-bottom:8px;
+}
+.sidebar-row{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:12px;padding:5px 0;border-bottom:1px solid var(--gray-100);
+}
+.sidebar-btn{
+  padding:3px 10px;border-radius:4px;font-size:11px;
+  background:var(--blue);color:#fff;border:none;cursor:pointer;
+}
+.sidebar-btn.outline{background:#fff;color:var(--blue);border:1px solid var(--blue);}
+.sidebar-eyecatch{
+  background:var(--gray-100);border:1px dashed var(--gray-200);
+  border-radius:6px;padding:16px;text-align:center;
+  font-size:12px;color:var(--gray-400);cursor:pointer;margin-top:6px;
+}
+.sidebar-eyecatch:hover{background:var(--blue-light);border-color:var(--blue);color:var(--blue);}
+
+/* ============================================
+   ANNOTATION
+   ============================================ */
+.anno{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:20px;height:20px;background:#e53e3e;color:#fff;
+  border-radius:50%;font-size:10px;font-weight:700;
+  vertical-align:middle;margin-right:2px;
+}
+
+/* ============================================
+   TABLE
+   ============================================ */
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0;}
+.tbl th{
+  background:var(--blue);color:#fff;
+  padding:9px 14px;text-align:left;font-size:12px;font-weight:600;
+}
+.tbl td{padding:9px 14px;border-bottom:1px solid var(--gray-200);vertical-align:top;}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl tr:nth-child(even) td{background:var(--gray-50);}
+
+/* ============================================
+   SWELL BLOCKS SHOWCASE
+   ============================================ */
+.swell-blocks{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin:12px 0;}
+.swell-block-card{
+  background:linear-gradient(135deg,#f8f5ff,#fff);
+  border:1px solid #e9d5ff;border-radius:8px;
+  padding:12px;text-align:center;font-size:12px;
+}
+.swell-block-card .ico{font-size:22px;margin-bottom:5px;}
+.swell-block-card .name{font-weight:600;color:#7c3aed;font-size:11px;}
+.swell-block-card .desc{color:var(--gray-600);font-size:10px;margin-top:2px;}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer{text-align:center;padding:36px 16px;font-size:12px;color:var(--gray-400);}
+
+/* ============================================
+   PRINT
+   ============================================ */
+@media print{
+  body{background:#fff;}
+  .sec,.toc{box-shadow:none;margin:16px 0;}
+  .header{background:#2271b1 !important;-webkit-print-color-adjust:exact;}
+}
+</style>
+</head>
+<body>
+
+<!-- ==============================
+     HEADER
+     ============================== -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-badge">🌊 WordPressテーマ SWELL 対応</div>
+    <h1>WordPress 更新マニュアル</h1>
+    <p>初めての方でも安心！基本操作を画面イメージ付きで丁寧に解説します</p>
+    <div class="header-tags">
+      <span class="header-tag">✅ Gutenberg（ブロックエディター）</span>
+      <span class="header-tag">✅ SWELL テーマ対応</span>
+      <span class="header-tag">✅ 全9項目</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==============================
+     TOC
+     ============================== -->
+<div class="toc container">
+  <div class="toc-head">📋 目次</div>
+  <div class="toc-groups">
+
+    <!-- グループ1: 基本操作 -->
+    <div class="toc-group">
+      <div class="toc-group-label">📌 基本操作</div>
+
+      <div class="toc-section">
+        <a class="toc-item" href="#s1"><span class="toc-num">1</span>ログイン方法</a>
+        <div class="toc-subs">
+          <a class="toc-sub" href="#s1">URLを入力してログイン画面へ</a>
+          <a class="toc-sub" href="#s1">ユーザー名・パスワードを入力</a>
+          <a class="toc-sub" href="#s1">ダッシュボードで完了</a>
+        </div>
+      </div>
+
+      <div class="toc-section">
+        <a class="toc-item" href="#s2"><span class="toc-num">2</span>新規記事の投稿</a>
+        <div class="toc-subs">
+          <a class="toc-sub" href="#s2">タイトル・本文を入力する</a>
+          <a class="toc-sub" href="#s2">改行・改段落の方法</a>
+          <a class="toc-sub" href="#s2">カテゴリーを選択する</a>
+          <a class="toc-sub" href="#s2">🏷️ タグを設定する</a>
+          <a class="toc-sub" href="#s2">「公開」ボタンで投稿完了</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- グループ2: テキスト編集 -->
+    <div class="toc-group">
+      <div class="toc-group-label">✏️ テキスト編集</div>
+
+      <div class="toc-section">
+        <a class="toc-item" href="#s3"><span class="toc-num">3</span>文字の装飾と見出しの設定</a>
+        <div class="toc-subs">
+          <a class="toc-sub" href="#s3">🔤 文字の装飾（太字・斜体・カラーなど）</a>
+          <a class="toc-sub" href="#s3">📑 見出しの設定（H2・H3・H4）</a>
+        </div>
+      </div>
+
+      <div class="toc-section">
+        <a class="toc-item" href="#s6"><span class="toc-num">6</span>リンクの挿入</a>
+        <div class="toc-subs">
+          <a class="toc-sub" href="#s6">🔗 テキストにリンクを設定する</a>
+          <a class="toc-sub" href="#s6">✂️ リンクを削除する</a>
+          <a class="toc-sub" href="#s6">🔘 SWELLボタンブロックを使う</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- グループ3: 投稿管理 -->
+    <div class="toc-group">
+      <div class="toc-group-label">📂 投稿管理</div>
+
+      <div class="toc-section">
+        <a class="toc-item" href="#s4"><span class="toc-num">4</span>投稿一覧からの編集・削除</a>
+        <div class="toc-subs">
+          <a class="toc-sub" href="#s4">✏️ 記事を編集する</a>
+          <a class="toc-sub" href="#s4">🗑️ 記事を削除する</a>
+          <a class="toc-sub" href="#s4">📦 複数記事をまとめて削除</a>
+        </div>
+      </div>
+
+      <div class="toc-section">
+        <a class="toc-item" href="#s5"><span class="toc-num">5</span>公開記事を下書きに変更</a>
+        <div class="toc-subs">
+          <a class="toc-sub" href="#s5">下書きへ切り替え（方法①②）</a>
+          <a class="toc-sub" href="#s5">🔒 非公開・パスワード保護</a>
+          <a class="toc-sub" href="#s5">📅 予約投稿について</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- グループ4: メディア管理 -->
+    <div class="toc-group">
+      <div class="toc-group-label">🖼 メディア管理</div>
+
+      <div class="toc-section">
+        <a class="toc-item" href="#s7"><span class="toc-num">7</span>ブロックの移動とコピー</a>
+        <div class="toc-subs">
+          <a class="toc-sub" href="#s7">↕️ ブロックを移動する</a>
+          <a class="toc-sub" href="#s7">📋 ブロックをコピー（複製）する</a>
+        </div>
+      </div>
+
+      <div class="toc-section">
+        <a class="toc-item" href="#s8"><span class="toc-num">8</span>画像のアップロード・差し替え</a>
+        <div class="toc-subs">
+          <a class="toc-sub" href="#s8">🖼️ 記事内に画像を挿入する</a>
+          <a class="toc-sub" href="#s8">🔄 既存の画像を差し替える</a>
+        </div>
+      </div>
+
+      <div class="toc-section">
+        <a class="toc-item" href="#s9"><span class="toc-num">9</span>アイキャッチ画像の設定</a>
+        <div class="toc-subs">
+          <a class="toc-sub" href="#s9">アイキャッチを設定する手順</a>
+          <a class="toc-sub" href="#s9">🗑️ アイキャッチ画像を削除する</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- グループ5: SWELL活用 -->
+    <div class="toc-group">
+      <div class="toc-group-label swell">🌊 SWELL 活用</div>
+
+      <div class="toc-section">
+        <a class="toc-item" href="#s10"><span class="toc-num swell">💡</span>SWELL独自ブロックの活用</a>
+        <div class="toc-subs">
+          <a class="toc-sub" href="#s10">ふきだし・ボックス・ボタン</a>
+          <a class="toc-sub" href="#s10">ステップ・FAQ・カードなど</a>
+        </div>
+      </div>
+
+      <div class="toc-section">
+        <a class="toc-item" href="#s11"><span class="toc-num swell">🖼</span>スライダー画像の差し替え</a>
+        <div class="toc-subs">
+          <a class="toc-sub" href="#s11">① カスタマイザーを開く</a>
+          <a class="toc-sub" href="#s11">② メインビジュアルへ進む</a>
+          <a class="toc-sub" href="#s11">③ スライダー画像を設定・差し替え</a>
+          <a class="toc-sub" href="#s11">📐 推奨画像サイズ</a>
+          <a class="toc-sub" href="#s11">④ 「公開」ボタンで保存</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- グループ6: Q&A -->
+    <div class="toc-group">
+      <div class="toc-group-label qa">❓ トラブルシューティング</div>
+
+      <div class="toc-section">
+        <a class="toc-item" href="#qa"><span class="toc-num qa">Q</span>よくある質問（Q&amp;A）</a>
+        <div class="toc-subs">
+          <a class="toc-sub" href="#qa">画像がアップロードできない</a>
+          <a class="toc-sub" href="#qa">記事を公開したのに表示されない</a>
+          <a class="toc-sub" href="#qa">右サイドバーが表示されない</a>
+          <a class="toc-sub" href="#qa">誤って公開した記事を非公開にしたい</a>
+          <a class="toc-sub" href="#qa">エディターが重くて使いにくい</a>
+          <a class="toc-sub" href="#qa">アイキャッチ画像が2重に表示される</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==============================
+     SECTION 1: ログイン
+     ============================== -->
+<div class="sec container" id="s1">
+  <div class="sec-head">
+    <div class="sec-num">1</div>
+    <div class="sec-title-wrap">
+      <div class="sec-label">はじめに</div>
+      <div class="sec-title">ログイン方法</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <ul class="steps">
+      <li class="step-item">
+        <div class="step-n">1</div>
+        <div class="step-content">
+          <div class="step-title">ブラウザのアドレスバーにURLを入力</div>
+          <p class="step-desc">Google Chrome や Edge を開き、アドレスバーに以下のURLを入力して <kbd>Enter</kbd> を押します。</p>
+          <div style="background:var(--gray-100);border:1px solid var(--gray-200);border-radius:6px;padding:10px 16px;margin-top:8px;font-size:13px;font-family:monospace;color:#2271b1;">
+            https://（あなたのサイトURL）/wp-admin/
+          </div>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">2</div>
+        <div class="step-content">
+          <div class="step-title">ユーザー名・パスワードを入力してログイン</div>
+          <div class="mock" style="margin-top:10px;">
+            <div class="mock-bar">
+              <div class="mock-dots"><div class="mock-dot r"></div><div class="mock-dot y"></div><div class="mock-dot g"></div></div>
+              <div class="mock-url">🔒 https://○○.com/wp-admin/</div>
+            </div>
+            <div class="mock-body">
+              <div style="max-width:300px;margin:0 auto;text-align:center;">
+                <div style="font-size:32px;margin-bottom:10px;">W</div>
+                <div style="background:var(--gray-100);border:1px solid var(--gray-200);border-radius:5px;padding:8px 12px;text-align:left;font-size:13px;margin-bottom:8px;color:var(--gray-600);">
+                  ユーザー名またはメールアドレス
+                </div>
+                <div style="background:var(--gray-100);border:1px solid var(--gray-200);border-radius:5px;padding:8px 12px;text-align:left;font-size:13px;margin-bottom:12px;color:var(--gray-600);">
+                  パスワード ••••••••
+                </div>
+                <div style="background:#2271b1;color:#fff;border-radius:5px;padding:9px 20px;font-size:13px;font-weight:600;">ログイン</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">3</div>
+        <div class="step-content">
+          <div class="step-title">ダッシュボードが表示されれば完了</div>
+          <p class="step-desc">「ダッシュボード」画面が開いたら、ログイン成功です。左のメニューから操作を始めましょう。</p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="callout warn">
+      <span class="callout-ico">⚠️</span>
+      <div class="callout-body">
+        <strong>ブックマーク推奨</strong>
+        <span>ログインURLはブラウザのお気に入りに登録しておくと便利です。ログインしたままにすると次回は自動でダッシュボードが開きます。</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==============================
+     SECTION 2: 新規投稿
+     ============================== -->
+<div class="sec container" id="s2">
+  <div class="sec-head">
+    <div class="sec-num">2</div>
+    <div class="sec-title-wrap">
+      <div class="sec-label">基本操作</div>
+      <div class="sec-title">新規記事の投稿</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <ul class="steps">
+      <li class="step-item">
+        <div class="step-n">1</div>
+        <div class="step-content">
+          <div class="step-title">「投稿 ▶ 新規追加」をクリック</div>
+          <p class="step-desc">左メニューの <span class="path">投稿 <span class="path-sep">▶</span> 新規追加</span> をクリックします。</p>
+          <div class="mock" style="margin-top:10px;">
+            <div class="mock-body" style="padding:0;">
+              <div class="admin-layout">
+                <div class="admin-sidebar">
+                  <div class="admin-sidebar-item">🏠 ダッシュボード</div>
+                  <div class="admin-sidebar-item active">📝 投稿</div>
+                  <div style="padding:4px 14px 4px 28px;font-size:10px;color:#9ca3af;">一覧</div>
+                  <div style="padding:4px 14px 4px 28px;font-size:10px;color:#72aee6;background:#2271b1;">→ 新規追加 ←</div>
+                  <div style="padding:4px 14px 4px 28px;font-size:10px;color:#9ca3af;">カテゴリー</div>
+                  <div class="admin-sidebar-item">📄 固定ページ</div>
+                  <div class="admin-sidebar-item">🖼 メディア</div>
+                </div>
+                <div class="admin-main">
+                  <div style="font-size:12px;color:var(--gray-600);">← 「投稿」の中の「新規追加」をクリックします</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">2</div>
+        <div class="step-content">
+          <div class="step-title">タイトルを入力する</div>
+          <p class="step-desc">「タイトルを追加」と薄く書いてある部分をクリックし、記事のタイトルを入力します。</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">3</div>
+        <div class="step-content">
+          <div class="step-title">本文を入力する</div>
+          <p class="step-desc">タイトルの下にある本文エリアをクリックすると <strong>「＋」マーク</strong>が表示されます。そのまま文字を入力するか、＋をクリックしてブロックを選んで作成します。</p>
+          <div class="editor-mock" style="margin-top:10px;">
+            <div class="editor-topbar">
+              <div class="editor-topbar-left">
+                <div class="editor-wplogo">W</div>
+                <div style="font-size:11px;color:#c3c4c7;">← 戻る</div>
+                <div style="font-size:11px;color:#c3c4c7;">＋ブロック追加</div>
+              </div>
+              <div class="editor-topbar-right">
+                <div class="chip outline" style="font-size:11px;">下書き保存</div>
+                <div class="chip outline" style="font-size:11px;">プレビュー</div>
+                <div class="chip green" style="font-size:11px;">公開</div>
+                <div style="width:28px;height:28px;background:rgba(255,255,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#c3c4c7;">⚙</div>
+              </div>
+            </div>
+            <div style="display:flex;">
+              <div class="editor-content" style="flex:1;">
+                <div class="editor-title-input" style="color:var(--gray-400);">タイトルを追加</div>
+                <div class="editor-block">本文を入力、またはスラッシュを入力してブロックを選択…</div>
+                <div style="text-align:center;font-size:20px;color:var(--gray-400);margin:8px 0;">＋</div>
+              </div>
+              <div class="editor-sidebar">
+                <div class="sidebar-tab">
+                  <div class="sidebar-tab-item active">投稿</div>
+                  <div class="sidebar-tab-item">ブロック</div>
+                </div>
+                <div class="sidebar-section">
+                  <div class="sidebar-section-title">ステータスと公開状態</div>
+                  <div class="sidebar-row"><span>公開状態</span><span class="chip outline" style="font-size:10px;">公開</span></div>
+                  <div class="sidebar-row"><span>日時</span><span style="font-size:11px;color:var(--gray-400);">今すぐ</span></div>
+                </div>
+                <div class="sidebar-section">
+                  <div class="sidebar-section-title">カテゴリー</div>
+                  <div style="font-size:12px;color:var(--gray-600);">☑ お知らせ<br>□ ブログ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="callout info" style="margin-top:10px;">
+            <span class="callout-ico">💡</span>
+            <div class="callout-body">
+              <strong>右サイドバーは「投稿」タブを選択</strong>
+              <span>右上の <span class="chip outline" style="font-size:11px;">⚙</span> アイコンでサイドバーの表示/非表示を切り替えられます。カテゴリやアイキャッチを設定するには <strong>「投稿」タブ</strong> が選ばれていることを確認してください。</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">4</div>
+        <div class="step-content">
+          <div class="step-title">改行・改段落の方法</div>
+          <table class="tbl">
+            <thead><tr><th>操作</th><th>キー</th><th>効果</th></tr></thead>
+            <tbody>
+              <tr><td>改段落（新しいブロック作成）</td><td><kbd>Enter</kbd></td><td>次のブロックへ移動</td></tr>
+              <tr><td>改行（同じブロック内）</td><td><kbd>Shift</kbd> + <kbd>Enter</kbd></td><td>ブロック内で行を変える</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">5</div>
+        <div class="step-content">
+          <div class="step-title">カテゴリーを選択する</div>
+          <p class="step-desc">右サイドバー（「投稿」タブ）の「カテゴリー」欄にチェックを入れます。新しいカテゴリーを追加したい場合は「新規カテゴリーを追加」をクリックして名前を入力します。</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">6</div>
+        <div class="step-content">
+          <div class="step-title">タグを設定する</div>
+          <p class="step-desc">カテゴリーの下にある「タグ」欄に記事のキーワードを入力し、<kbd>Enter</kbd> または <kbd>，</kbd> で確定します。複数設定できます。</p>
+
+          <!-- タグとカテゴリーの違い -->
+          <div class="callout info" style="margin-top:10px;">
+            <span class="callout-ico">🏷️</span>
+            <div class="callout-body">
+              <strong>タグとカテゴリーの違い</strong>
+              <span>カテゴリーは記事をジャンルでまとめる「フォルダ」、タグは記事の内容を示す「値札（キーワード）」です。カテゴリーは階層構造を持ちますが、タグは階層なし・複数設定が基本です。</span>
+            </div>
+          </div>
+
+          <!-- タグ入力のモック -->
+          <div class="mock" style="margin-top:12px;">
+            <div class="mock-body">
+              <div style="font-size:12px;color:var(--gray-400);margin-bottom:8px;">▼ サイドバー「投稿」タブのタグ欄</div>
+              <div style="border:1px solid var(--gray-200);border-radius:8px;overflow:hidden;">
+                <div style="background:var(--gray-100);padding:6px 10px;font-size:11px;font-weight:700;color:var(--gray-600);letter-spacing:0.5px;border-bottom:1px solid var(--gray-200);">タグ</div>
+                <div style="padding:10px 12px;">
+                  <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;">
+                    <span style="background:var(--blue-light);border:1px solid #c5ddf5;color:var(--blue);border-radius:20px;padding:3px 10px;font-size:12px;display:flex;align-items:center;gap:5px;">夏祭り <span style="color:var(--gray-400);cursor:pointer;">×</span></span>
+                    <span style="background:var(--blue-light);border:1px solid #c5ddf5;color:var(--blue);border-radius:20px;padding:3px 10px;font-size:12px;display:flex;align-items:center;gap:5px;">2025年 <span style="color:var(--gray-400);cursor:pointer;">×</span></span>
+                    <span style="background:var(--blue-light);border:1px solid #c5ddf5;color:var(--blue);border-radius:20px;padding:3px 10px;font-size:12px;display:flex;align-items:center;gap:5px;">限定 <span style="color:var(--gray-400);cursor:pointer;">×</span></span>
+                  </div>
+                  <div style="border:1px solid var(--gray-200);border-radius:5px;padding:6px 10px;font-size:12px;color:var(--gray-400);">タグを追加… Enter または , で確定</div>
+                  <div style="font-size:11px;color:var(--blue);margin-top:6px;cursor:pointer;">よく使うタグから選択</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- タグ運用ポイント -->
+          <table class="tbl" style="margin-top:12px;">
+            <thead><tr><th>ポイント</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><td>🔢 <strong>数は2〜5個が目安</strong></td><td>付けすぎると読者が混乱します。最重要キーワードに絞りましょう</td></tr>
+              <tr><td>✏️ <strong>表記を統一する</strong></td><td>「WordPress」と「ワードプレス」など同じ意味のタグは作らない</td></tr>
+              <tr><td>🔁 <strong>カテゴリーと重複させない</strong></td><td>カテゴリーと同じ名前のタグは冗長です。異なる軸で設定しましょう</td></tr>
+            </tbody>
+          </table>
+
+          <div class="callout warn" style="margin-top:10px;">
+            <span class="callout-ico">⚠️</span>
+            <div class="callout-body">
+              <strong>スラッグは後から管理画面で半角英数字に修正を推奨</strong>
+              <span>記事編集画面からタグを追加すると、スラッグ（URLの一部）が日本語のままになることがあります。管理画面の <span class="path">投稿 <span class="path-sep">▶</span> タグ</span> から編集できます（例: 夏祭り → <code style="font-size:11px;background:var(--gray-100);padding:1px 5px;border-radius:3px;">summer-festival</code>）。</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">7</div>
+        <div class="step-content">
+          <div class="step-title">プレビューで確認する</div>
+          <p class="step-desc">右上の <span class="chip outline" style="font-size:11px;">プレビュー</span> をクリックすると、実際のサイトでどう見えるか確認できます。</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">8</div>
+        <div class="step-content">
+          <div class="step-title">「公開」ボタンをクリックして投稿完了</div>
+          <p class="step-desc">右上の <span class="chip green">公開</span> をクリック → 確認ダイアログで再度 <span class="chip green">公開</span> をクリックするとサイトに公開されます。</p>
+          <div class="callout ok">
+            <span class="callout-ico">✅</span>
+            <div class="callout-body">
+              <strong>すぐに公開しない場合</strong>
+              <span><span class="chip outline" style="font-size:11px;">下書き保存</span> をクリックすれば、内容を保存したまま公開せずに一時保存できます。</span>
+            </div>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+
+  </div>
+</div>
+
+<!-- ==============================
+     SECTION 3: 文字の装飾と見出し
+     ============================== -->
+<div class="sec container" id="s3">
+  <div class="sec-head">
+    <div class="sec-num">3</div>
+    <div class="sec-title-wrap">
+      <div class="sec-label">テキスト編集</div>
+      <div class="sec-title">文字の装飾と見出しの設定</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <div class="sub">
+      <div class="sub-title">🔤 文字の装飾（太字・斜体・カラーなど）</div>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">装飾したい文字を選択する</div>
+            <p class="step-desc">マウスでドラッグして文字を選択すると、背景が青くハイライトされます。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">ツールバーが自動表示される</div>
+            <p class="step-desc">選択すると文字の上にツールバーがポップアップします。</p>
+            <div class="mock" style="margin-top:10px;">
+              <div class="mock-body">
+                <div style="font-size:12px;color:var(--gray-400);margin-bottom:6px;">▼ 選択時に表示されるツールバー</div>
+                <div class="editor-toolbar">
+                  <div class="editor-tb-btn"><strong>B</strong></div>
+                  <div class="editor-tb-btn"><em>I</em></div>
+                  <div class="editor-tb-btn" style="text-decoration:underline;">U</div>
+                  <div class="editor-tb-btn" style="text-decoration:line-through;">S</div>
+                  <div class="editor-tb-btn">🔗</div>
+                  <div class="editor-tb-btn">A▾</div>
+                  <div class="editor-tb-btn">⋮</div>
+                </div>
+                <div style="background:#dbeafe;padding:8px 12px;border-radius:5px;font-size:13px;">
+                  ここが<strong style="background:#fef9c3;">選択した文字</strong>のサンプルです
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">3</div>
+          <div class="step-content">
+            <div class="step-title">装飾ボタンをクリックする</div>
+            <table class="tbl">
+              <thead><tr><th>ボタン</th><th>効果</th><th>ショートカット</th></tr></thead>
+              <tbody>
+                <tr><td><strong>B</strong></td><td>太字（ボールド）</td><td><kbd>Ctrl</kbd>+<kbd>B</kbd></td></tr>
+                <tr><td><em>I</em></td><td>斜体（イタリック）</td><td><kbd>Ctrl</kbd>+<kbd>I</kbd></td></tr>
+                <tr><td style="text-decoration:underline;">U</td><td>下線（アンダーライン）</td><td><kbd>Ctrl</kbd>+<kbd>U</kbd></td></tr>
+                <tr><td style="text-decoration:line-through;">S</td><td>取り消し線（ストライク）</td><td>—</td></tr>
+                <tr><td>A▾</td><td>文字色・ハイライト変更</td><td>—</td></tr>
+              </tbody>
+            </table>
+            <div class="callout info" style="margin-top:10px;">
+              <span class="callout-ico">ℹ️</span>
+              <div class="callout-body">
+                <strong>もう一度クリックで解除</strong>
+                <span>太字・斜体などはもう一度同じボタンをクリックすると解除されます。</span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <div class="sub">
+      <div class="sub-title">📑 見出しの設定（H2・H3・H4）</div>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">見出しブロックを追加する</div>
+            <p class="step-desc">＋ボタン をクリック → 「見出し」を選択します。または既存のテキストブロックで、ツールバー左端の <span class="chip outline" style="font-size:11px;">段落</span> → 「見出し」に変更する方法もあります。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">見出しレベルを選ぶ</div>
+            <p class="step-desc">ツールバーに「H2」「H3」「H4」が表示されるのでクリックして選択します。</p>
+            <div class="mock" style="margin-top:8px;">
+              <div class="mock-body">
+                <div class="editor-toolbar" style="margin-bottom:12px;">
+                  <div class="editor-tb-btn">見出し ▾</div>
+                  <div class="editor-tb-btn" style="background:var(--blue-light);color:var(--blue);">H2</div>
+                  <div class="editor-tb-btn">H3</div>
+                  <div class="editor-tb-btn">H4</div>
+                  <div class="editor-tb-btn">H5</div>
+                  <div class="editor-tb-btn">H6</div>
+                </div>
+                <div style="font-size:19px;font-weight:700;border-bottom:2px solid #e5e7eb;padding-bottom:6px;">H2 見出しのサンプル</div>
+              </div>
+            </div>
+            <div class="callout info" style="margin-top:10px;">
+              <span class="callout-ico">📌</span>
+              <div class="callout-body">
+                <strong>見出しレベルの使い方</strong>
+                <span><strong>H2</strong> = 大見出し（章のタイトル）<br>
+                <strong>H3</strong> = 中見出し（節のタイトル）<br>
+                <strong>H4</strong> = 小見出し（より細かいタイトル）<br>
+                ※ H1はページタイトルが自動設定されるため、記事本文では使いません。</span>
+              </div>
+            </div>
+            <div class="callout warn" style="margin-top:8px;">
+              <span class="callout-ico">⚠️</span>
+              <div class="callout-body">
+                <strong>見出しの順序に注意</strong>
+                <span>H2の中にH3、H3の中にH4は OK ですが、H3の後にH2が来るなど順序が逆になるのはNGです。見出しは必ず大 → 小の順で使ってください。</span>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">3</div>
+          <div class="step-content">
+            <div class="step-title">SWELLでは見出しデザインをカスタマイズできる</div>
+            <p class="step-desc">SWELLテーマでは、見出しのデザイン（スタイル・色・背景など）をカスタマイザーでサイト全体に統一設定できます。記事ごとに個別に変えることも右サイドバーから可能です。</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==============================
+     SECTION 4: 投稿一覧 編集・削除
+     ============================== -->
+<div class="sec container" id="s4">
+  <div class="sec-head">
+    <div class="sec-num">4</div>
+    <div class="sec-title-wrap">
+      <div class="sec-label">投稿管理</div>
+      <div class="sec-title">投稿一覧からの編集・削除</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <div class="sub">
+      <div class="sub-title">✏️ 記事を編集する</div>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">「投稿 ▶ 投稿一覧」を開く</div>
+            <p class="step-desc">左メニューの <span class="path">投稿 <span class="path-sep">▶</span> 投稿一覧</span> をクリックします。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">記事タイトルにカーソルを乗せる</div>
+            <p class="step-desc">マウスを記事のタイトルに重ねると、タイトルの下に操作メニューが表示されます。</p>
+            <div class="mock" style="margin-top:10px;">
+              <div class="mock-body">
+                <div style="font-size:12px;color:var(--gray-400);margin-bottom:8px;">投稿一覧</div>
+                <div style="border:1px solid var(--gray-200);border-radius:6px;overflow:hidden;">
+                  <div style="background:var(--gray-100);padding:7px 14px;font-size:11px;font-weight:600;border-bottom:1px solid var(--gray-200);display:flex;gap:20px;">
+                    <span>タイトル</span><span>カテゴリー</span><span>日付</span>
+                  </div>
+                  <div style="padding:10px 14px;background:#eaf5ff;border-left:3px solid var(--blue);">
+                    <div style="font-size:13px;font-weight:600;color:var(--blue);">
+                      <span class="anno">①</span> 2025年夏のイベントについて
+                    </div>
+                    <div style="font-size:11px;color:var(--gray-400);margin-top:4px;display:flex;gap:10px;">
+                      <span class="chip outline" style="font-size:10px;">✏️ 編集</span>
+                      <span class="chip outline" style="font-size:10px;">⚡ クイック編集</span>
+                      <span class="chip red" style="font-size:10px;">🗑 ゴミ箱</span>
+                      <span class="chip outline" style="font-size:10px;">👁 表示</span>
+                    </div>
+                  </div>
+                  <div style="padding:10px 14px;border-bottom:1px solid var(--gray-100);">
+                    <div style="font-size:13px;">スタッフ紹介：山田太郎</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">3</div>
+          <div class="step-content">
+            <div class="step-title">「編集」をクリックして内容を修正</div>
+            <p class="step-desc">編集画面が開きます。内容を直したら、右上の <span class="chip green">更新</span> ボタンをクリックして保存します。</p>
+          </div>
+        </li>
+      </ul>
+      <div class="callout info">
+        <span class="callout-ico">💡</span>
+        <div class="callout-body">
+          <strong>公開中の記事を見ながら編集したい場合</strong>
+          <span>サイト上で記事を表示中に、画面上部の管理バーにある「投稿を編集」をクリックすると、その記事の編集画面に直接移動できます（ログイン中のみ表示）。</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="sub">
+      <div class="sub-title">🗑️ 記事を削除する</div>
+      <div class="callout warn">
+        <span class="callout-ico">⚠️</span>
+        <div class="callout-body">
+          <strong>削除はゴミ箱経由で行います</strong>
+          <span>「ゴミ箱へ移動」しても、ゴミ箱内にしばらく残ります。完全に消したい場合はゴミ箱を空にする操作が必要です。</span>
+        </div>
+      </div>
+      <ul class="steps" style="margin-top:14px;">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">タイトルにカーソルを乗せ「ゴミ箱」をクリック</div>
+            <p class="step-desc">投稿一覧でタイトルにマウスを乗せると表示される <span class="chip red">🗑 ゴミ箱</span> をクリックします。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">（必要な場合）完全に削除する</div>
+            <p class="step-desc">一覧画面上部の「ゴミ箱（件数）」タブをクリック → 対象の記事を選んで「完全に削除する」または「ゴミ箱を空にする」をクリックします。</p>
+          </div>
+        </li>
+      </ul>
+      <div class="callout danger">
+        <span class="callout-ico">🚫</span>
+        <div class="callout-body">
+          <strong>完全削除は取り消せません</strong>
+          <span>「完全に削除する」操作は元に戻せません。本当に不要なファイルのみ削除するよう注意してください。</span>
+        </div>
+      </div>
+
+      <hr class="divider">
+      <div class="sub-title" style="font-size:13px;margin-top:4px;">📦 複数記事をまとめて削除する</div>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">削除したい記事の左端チェックボックスにチェック</div>
+            <p class="step-desc">複数の記事にチェックを入れることができます。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">「一括操作 ▶ ゴミ箱へ移動」を選択して「適用」</div>
+            <p class="step-desc">一覧上部の「一括操作」プルダウンから「ゴミ箱へ移動」を選び、「適用」ボタンをクリックします。</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==============================
+     SECTION 5: 下書きに変更
+     ============================== -->
+<div class="sec container" id="s5">
+  <div class="sec-head">
+    <div class="sec-num">5</div>
+    <div class="sec-title-wrap">
+      <div class="sec-label">公開設定</div>
+      <div class="sec-title">公開中の記事を下書きに変更</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <div class="callout info">
+      <span class="callout-ico">ℹ️</span>
+      <div class="callout-body">
+        <strong>こんなときに使います</strong>
+        <span>記事を大幅に修正したい・イベント終了後に一時的に非公開にしたい、といった場面で便利です。下書きにすると <strong>訪問者には見えなくなります</strong>が、管理画面では引き続き編集できます。</span>
+      </div>
+    </div>
+
+    <ul class="steps" style="margin-top:16px;">
+      <li class="step-item">
+        <div class="step-n">1</div>
+        <div class="step-content">
+          <div class="step-title">公開中の記事の編集画面を開く</div>
+          <p class="step-desc">投稿一覧から「編集」をクリックしてエディターを開きます。</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">2</div>
+        <div class="step-content">
+          <div class="step-title">右上の「下書きへ切り替え」をクリック（方法①）</div>
+          <p class="step-desc">公開済みの記事では、右上に <span class="chip outline" style="font-size:11px;">下書きへ切り替え</span> ボタンが表示されます。クリックすると確認ダイアログが出るので「OK」を押します。</p>
+          <div class="mock" style="margin-top:10px;">
+            <div class="mock-body" style="padding:8px 12px;">
+              <div style="display:flex;justify-content:flex-end;align-items:center;gap:8px;">
+                <div class="chip outline" style="font-size:11px;">下書きへ切り替え ←</div>
+                <div class="chip outline" style="font-size:11px;">プレビュー</div>
+                <div class="chip green" style="font-size:11px;">更新</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">3</div>
+        <div class="step-content">
+          <div class="step-title">サイドバーの「公開状態」から変更する（方法②）</div>
+          <p class="step-desc">右サイドバー「投稿」タブ → 「ステータスと公開状態」の「公開状態」横の <span class="chip outline" style="font-size:11px;">編集</span> をクリック → 「下書き」を選択 → <span class="chip green">更新</span> で保存。</p>
+        </div>
+      </li>
+    </ul>
+
+    <hr class="divider">
+
+    <div class="sub-title">🔒 非公開・パスワード保護</div>
+    <table class="tbl">
+      <thead><tr><th>設定</th><th>表示される対象</th><th>用途</th></tr></thead>
+      <tbody>
+        <tr><td><strong>公開</strong></td><td>全員</td><td>通常の公開</td></tr>
+        <tr><td><strong>非公開</strong></td><td>管理者・編集者のみ</td><td>スタッフ限定ページ</td></tr>
+        <tr><td><strong>パスワード保護</strong></td><td>パスワードを知っている人</td><td>会員向け・限定公開</td></tr>
+        <tr><td><strong>下書き</strong></td><td>誰にも表示されない</td><td>作成中・一時非公開</td></tr>
+      </tbody>
+    </table>
+    <div class="callout info" style="margin-top:10px;">
+      <span class="callout-ico">📅</span>
+      <div class="callout-body">
+        <strong>予約投稿（未来の日時に自動公開）</strong>
+        <span>サイドバーの「日時」欄で <strong>未来の日時</strong> を設定して「予約投稿」ボタンをクリックすると、指定日時に自動で公開されます。</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==============================
+     SECTION 6: リンクの挿入
+     ============================== -->
+<div class="sec container" id="s6">
+  <div class="sec-head">
+    <div class="sec-num">6</div>
+    <div class="sec-title-wrap">
+      <div class="sec-label">テキスト編集</div>
+      <div class="sec-title">リンクの挿入</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <div class="sub">
+      <div class="sub-title">🔗 テキストにリンクを設定する</div>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">リンクにしたい文字を選択する</div>
+            <p class="step-desc">マウスでドラッグして文字を選択します（例：「こちらをクリック」「詳細はこちら」など）。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">🔗 リンクアイコンをクリック</div>
+            <p class="step-desc">ツールバーの <span class="chip outline" style="font-size:11px;">🔗</span> アイコンをクリック（またはショートカット <kbd>Ctrl</kbd>+<kbd>K</kbd>）。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">3</div>
+          <div class="step-content">
+            <div class="step-title">URLを入力して Enter</div>
+            <p class="step-desc">入力欄に貼り付けたいURLを入力し、<kbd>Enter</kbd> を押します。サイト内のページにリンクする場合は、ページのタイトルを入力すると候補が表示されます。</p>
+            <div class="mock" style="margin-top:8px;">
+              <div class="mock-body">
+                <div style="background:#fff;border:1px solid var(--blue);border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:8px;font-size:13px;">
+                  <span>🔗</span>
+                  <span style="flex:1;color:var(--gray-400);">https://example.com または検索キーワード</span>
+                  <span class="chip blue" style="font-size:11px;">→ Enter</span>
+                </div>
+                <div style="font-size:11px;color:var(--gray-400);margin-top:6px;">例：「お知らせ一覧」と入力すると内部ページが候補表示されます</div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">4</div>
+          <div class="step-content">
+            <div class="step-title">外部サイトは「新しいタブで開く」をオンに</div>
+            <p class="step-desc">リンクパネルの「新しいタブで開く」トグルをオンにすると、クリック時に別タブで開きます。外部サイトへのリンクでは設定推奨です。</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <div class="sub">
+      <div class="sub-title">✂️ リンクを削除する</div>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">リンクテキストをクリックする</div>
+            <p class="step-desc">リンクが設定された文字をクリックすると、リンク先URLのプレビューが表示されます。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">リンク解除アイコン（鎖が切れたマーク）をクリック</div>
+            <p class="step-desc">プレビューパネルにある <span class="chip outline" style="font-size:11px;">🔗̶ リンク解除</span> をクリックするとリンクが削除されます。</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <div class="sub">
+      <div class="sub-title">🔘 SWELLボタンブロックを使う <span class="swell-badge">SWELL</span></div>
+      <p style="font-size:14px;color:var(--gray-600);margin-bottom:12px;">テキストリンクではなく、目立つ「ボタン」としてリンクを設置したい場合はSWELL独自の <strong>SWELLボタンブロック</strong> が便利です。</p>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">＋ ボタンから「SWELLボタン」を選択</div>
+            <p class="step-desc">ブロック追加（＋）→ 「SWELL」カテゴリ → 「SWELLボタン」を選択します。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">ボタンのテキストとリンクURLを設定</div>
+            <p class="step-desc">右サイドバーでボタンの色・形・テキストを設定し、URLを入力します。</p>
+            <div style="text-align:center;margin-top:8px;">
+              <div style="display:inline-block;background:var(--blue);color:#fff;border-radius:6px;padding:10px 28px;font-size:14px;font-weight:600;">詳細はこちら →</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==============================
+     SECTION 7: ブロックの移動・コピー
+     ============================== -->
+<div class="sec container" id="s7">
+  <div class="sec-head">
+    <div class="sec-num">7</div>
+    <div class="sec-title-wrap">
+      <div class="sec-label">ブロック操作</div>
+      <div class="sec-title">ブロックの移動とコピー</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <div class="callout info">
+      <span class="callout-ico">ℹ️</span>
+      <div class="callout-body">
+        <strong>「ブロック」とは？</strong>
+        <span>Gutenbergでは、段落・見出し・画像・リストなど、コンテンツの1つのかたまりを「ブロック」と呼びます。ブロック単位で並び替えや複製が可能です。</span>
+      </div>
+    </div>
+
+    <div class="sub" style="margin-top:16px;">
+      <div class="sub-title">↕️ ブロックを移動する</div>
+      <div class="mock" style="margin-bottom:14px;">
+        <div class="mock-body">
+          <div style="font-size:12px;color:var(--gray-400);margin-bottom:8px;">▼ ブロック選択時に左側に表示されるアイコン</div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="background:var(--gray-100);border:1px solid var(--gray-200);border-radius:4px;padding:4px 6px;font-size:11px;text-align:center;cursor:pointer;">▲<br><span style="font-size:9px;">上へ</span></div>
+              <div style="background:var(--gray-100);border:1px solid var(--gray-200);border-radius:4px;padding:4px 6px;font-size:11px;text-align:center;cursor:pointer;">▼<br><span style="font-size:9px;">下へ</span></div>
+            </div>
+            <div style="background:var(--gray-100);border:1px solid var(--gray-200);border-radius:4px;padding:10px 6px;font-size:11px;cursor:grab;color:var(--gray-600);">⋮⋮<br><span style="font-size:9px;">ドラッグ</span></div>
+            <div style="flex:1;background:var(--blue-light);border:1px solid #c5ddf5;border-radius:6px;padding:10px 14px;font-size:13px;">← 選択中のブロック</div>
+          </div>
+        </div>
+      </div>
+      <table class="tbl">
+        <thead><tr><th>方法</th><th>操作</th></tr></thead>
+        <tbody>
+          <tr><td><strong>▲ / ▼ ボタンで1つずつ移動</strong></td><td>ブロック左側の ▲（上）▼（下）をクリックする</td></tr>
+          <tr><td><strong>ドラッグで自由移動</strong></td><td>ブロック左端の <strong>⋮⋮</strong>（ドラッグハンドル）をつかんで上下にドラッグする</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="divider">
+
+    <div class="sub">
+      <div class="sub-title">📋 ブロックをコピー（複製）する</div>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">コピーしたいブロックをクリックして選択</div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">ツールバー右端の「⋮」をクリック</div>
+            <p class="step-desc">ツールバー右端の <span class="chip outline" style="font-size:11px;">⋮</span> をクリックするとメニューが開きます。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">3</div>
+          <div class="step-content">
+            <div class="step-title">「複製」を選択</div>
+            <p class="step-desc">「複製」をクリックすると、そのブロックのすぐ下にコピーが作成されます。</p>
+          </div>
+        </li>
+      </ul>
+      <div class="callout ok">
+        <span class="callout-ico">⌨️</span>
+        <div class="callout-body">
+          <strong>複数ブロックのコピー＆ペースト</strong>
+          <span>複数ブロックを選択した状態で <kbd>Ctrl</kbd>+<kbd>C</kbd> でコピー → 貼り付けたい位置でカーソルを合わせ <kbd>Shift</kbd>+<kbd>Ctrl</kbd>+<kbd>V</kbd> でブロックとして貼り付けができます。</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==============================
+     SECTION 8: 画像アップロード
+     ============================== -->
+<div class="sec container" id="s8">
+  <div class="sec-head">
+    <div class="sec-num">8</div>
+    <div class="sec-title-wrap">
+      <div class="sec-label">メディア管理</div>
+      <div class="sec-title">画像のアップロード・差し替え</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <div class="sub">
+      <div class="sub-title">🖼️ 記事内に画像を挿入する</div>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">「＋」から「画像」ブロックを追加</div>
+            <p class="step-desc">画像を入れたい位置で ＋ ボタンをクリック → 「画像」を選択します（または「画像」と検索）。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">画像のアップロード方法を選ぶ</div>
+            <div class="mock" style="margin-top:8px;">
+              <div class="mock-body">
+                <div style="border:2px dashed var(--gray-200);border-radius:8px;padding:20px;text-align:center;">
+                  <div style="font-size:28px;margin-bottom:8px;">🖼</div>
+                  <div style="display:flex;justify-content:center;gap:10px;">
+                    <div class="chip blue">アップロード</div>
+                    <div class="chip outline">メディアライブラリ</div>
+                    <div class="chip outline">URLから挿入</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table class="tbl" style="margin-top:10px;">
+              <thead><tr><th>方法</th><th>使い方</th></tr></thead>
+              <tbody>
+                <tr><td><span class="chip blue" style="font-size:11px;">アップロード</span></td><td>PCから新しい画像ファイルを選択してアップロード</td></tr>
+                <tr><td><span class="chip outline" style="font-size:11px;">メディアライブラリ</span></td><td>過去にアップロード済みの画像から選ぶ</td></tr>
+                <tr><td><span class="chip outline" style="font-size:11px;">URLから挿入</span></td><td>外部画像のURLを直接貼り付ける</td></tr>
+                <tr><td>ドラッグ&ドロップ</td><td>画像ブロック上にファイルを直接ドラッグ</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">3</div>
+          <div class="step-content">
+            <div class="step-title">画像の配置・サイズを調整する</div>
+            <p class="step-desc">画像を選択すると右サイドバーに設定が表示されます。</p>
+            <table class="tbl">
+              <thead><tr><th>設定項目</th><th>内容</th></tr></thead>
+              <tbody>
+                <tr><td>配置</td><td>左寄せ・中央・右寄せ・フルワイドなど</td></tr>
+                <tr><td>代替テキスト（alt）</td><td>画像の説明文（SEO・アクセシビリティに重要）</td></tr>
+                <tr><td>画像サイズ</td><td>サムネイル・中・大・フルサイズ、またはカスタム</td></tr>
+                <tr><td>スタイル</td><td>角丸・ドロップシャドウなど（SWELLで豊富）</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">4</div>
+          <div class="step-content">
+            <div class="step-title">代替テキスト（alt）を必ず入力する</div>
+            <p class="step-desc">右サイドバーの「代替テキスト」欄に画像の内容を説明する短い文章を入力してください（例：「スタッフ山田が笑顔で立っている写真」）。</p>
+            <div class="callout ok">
+              <span class="callout-ico">✅</span>
+              <div class="callout-body">
+                <strong>代替テキストを入れる理由</strong>
+                <span>Googleなどの検索エンジンが画像内容を認識でき、SEO向上につながります。また視覚障がいのある方がスクリーンリーダーで読み上げる際にも使われます。</span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <div class="sub">
+      <div class="sub-title">🔄 既存の画像を別の画像に差し替える</div>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">差し替えたい画像ブロックをクリック</div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">ツールバーまたはサイドバーの「置換」をクリック</div>
+            <p class="step-desc">ツールバーの <span class="chip outline" style="font-size:11px;">置換</span> または右サイドバーの「画像を差し替え」をクリックします。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">3</div>
+          <div class="step-content">
+            <div class="step-title">新しい画像をアップロードまたは選択</div>
+            <p class="step-desc">「アップロード」または「メディアライブラリ」から新しい画像を選択すると置き換わります。</p>
+          </div>
+        </li>
+      </ul>
+      <div class="callout warn">
+        <span class="callout-ico">⚠️</span>
+        <div class="callout-body">
+          <strong>推奨ファイル形式とサイズ</strong>
+          <span>形式は JPEG・PNG・WebP を推奨。1ファイルあたり <strong>1MB以下</strong> を目安にすると表示速度に影響しません（最大5MB）。</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==============================
+     SECTION 9: アイキャッチ
+     ============================== -->
+<div class="sec container" id="s9">
+  <div class="sec-head">
+    <div class="sec-num">9</div>
+    <div class="sec-title-wrap">
+      <div class="sec-label">投稿設定</div>
+      <div class="sec-title">アイキャッチ画像の設定</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <div class="callout info">
+      <span class="callout-ico">ℹ️</span>
+      <div class="callout-body">
+        <strong>アイキャッチ画像とは？</strong>
+        <span>記事の「顔」となるメイン画像です。投稿一覧・SNSシェア時・トップページなどに表示されます。設定しないとSNSシェア時に画像が表示されないことがあるため、必ず設定することをおすすめします。</span>
+      </div>
+    </div>
+
+    <ul class="steps" style="margin-top:16px;">
+      <li class="step-item">
+        <div class="step-n">1</div>
+        <div class="step-content">
+          <div class="step-title">記事の編集画面で右サイドバーを表示する</div>
+          <p class="step-desc">右上の <span class="chip outline" style="font-size:11px;">⚙ 設定</span> アイコンをクリックしてサイドバーを表示します。</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">2</div>
+        <div class="step-content">
+          <div class="step-title">「投稿」タブを選択する</div>
+          <p class="step-desc">サイドバー上部の「投稿」タブが選択されていることを確認します（「ブロック」タブと間違えないように）。</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">3</div>
+        <div class="step-content">
+          <div class="step-title">「アイキャッチ画像」欄を開く</div>
+          <p class="step-desc">サイドバーを下にスクロールし「アイキャッチ画像」をクリックして展開します。</p>
+          <div class="editor-mock" style="margin-top:10px;">
+            <div style="display:flex;">
+              <div style="flex:1;background:var(--gray-100);padding:14px;font-size:13px;color:var(--gray-400);">記事の編集エリア</div>
+              <div class="editor-sidebar">
+                <div class="sidebar-tab">
+                  <div class="sidebar-tab-item active">投稿</div>
+                  <div class="sidebar-tab-item">ブロック</div>
+                </div>
+                <div class="sidebar-section">
+                  <div class="sidebar-section-title">ステータス</div>
+                  <div class="sidebar-row"><span>公開状態</span><span>公開</span></div>
+                </div>
+                <div class="sidebar-section">
+                  <div class="sidebar-section-title">カテゴリー</div>
+                </div>
+                <div class="sidebar-section">
+                  <div class="sidebar-section-title" style="color:var(--blue);font-weight:800;">▼ アイキャッチ画像 ← ここ!</div>
+                  <div class="sidebar-eyecatch">
+                    🖼<br>アイキャッチ画像を設定
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">4</div>
+        <div class="step-content">
+          <div class="step-title">「アイキャッチ画像を設定」をクリックして画像を選ぶ</div>
+          <p class="step-desc">メディアライブラリが開きます。使いたい画像をクリックして選択し、右下の <span class="chip blue">アイキャッチ画像を設定</span> ボタンをクリックします。</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">5</div>
+        <div class="step-content">
+          <div class="step-title">記事を「更新」または「公開」して保存</div>
+          <p class="step-desc">右上の <span class="chip green">更新</span>（または <span class="chip green">公開</span>）ボタンをクリックして保存します。</p>
+        </div>
+      </li>
+    </ul>
+
+    <hr class="divider">
+
+    <div class="sub-title">🗑️ アイキャッチ画像を削除する</div>
+    <ul class="steps">
+      <li class="step-item">
+        <div class="step-n">1</div>
+        <div class="step-content">
+          <div class="step-title">設定済み画像のサムネイル下に「アイキャッチ画像を削除」が表示される</div>
+          <p class="step-desc">サイドバーのアイキャッチ欄に現在の画像が表示されている場合、その下に「アイキャッチ画像を削除」リンクが表示されます。</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">2</div>
+        <div class="step-content">
+          <div class="step-title">クリックして削除 → 「更新」で保存</div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="callout ok">
+      <span class="callout-ico">💡</span>
+      <div class="callout-body">
+        <strong>推奨サイズ（SWELL）</strong>
+        <span>横 <strong>1200px × 縦 630px</strong>（比率 1.91:1）が一般的なOGP推奨サイズです。SWELLではアイキャッチをコンテンツ上部に大きく表示するオシャレなスタイルも設定できます（カスタマイザーで変更可）。</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==============================
+     SECTION 10: SWELL独自ブロック
+     ============================== -->
+<div class="sec container" id="s10">
+  <div class="sec-head swell-sec">
+    <div class="sec-num">💡</div>
+    <div class="sec-title-wrap">
+      <div class="sec-label">活用テクニック</div>
+      <div class="sec-title">SWELL独自ブロックの活用</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <p style="font-size:14px;color:var(--gray-600);margin-bottom:16px;">SWELLには通常のGutenbergブロックに加え、デザイン性の高い独自ブロックが22種類以上用意されています。これらを活用すると、コードなしでプロっぽい記事が作れます。</p>
+
+    <div class="swell-blocks">
+      <div class="swell-block-card">
+        <div class="ico">💬</div>
+        <div class="name">ふきだし</div>
+        <div class="desc">人物アイコン付きの会話風吹き出し</div>
+      </div>
+      <div class="swell-block-card">
+        <div class="ico">📦</div>
+        <div class="name">ボックス</div>
+        <div class="desc">装飾されたまとめボックス</div>
+      </div>
+      <div class="swell-block-card">
+        <div class="ico">🔘</div>
+        <div class="name">SWELLボタン</div>
+        <div class="desc">リンク付きのおしゃれなボタン</div>
+      </div>
+      <div class="swell-block-card">
+        <div class="ico">📊</div>
+        <div class="name">ステップ</div>
+        <div class="desc">手順をわかりやすく表示</div>
+      </div>
+      <div class="swell-block-card">
+        <div class="ico">🏆</div>
+        <div class="name">ランキング</div>
+        <div class="desc">商品比較・ランキング表示</div>
+      </div>
+      <div class="swell-block-card">
+        <div class="ico">⭐</div>
+        <div class="name">商品レビュー</div>
+        <div class="desc">評価・メリット・デメリット表</div>
+      </div>
+      <div class="swell-block-card">
+        <div class="ico">📋</div>
+        <div class="name">FAQ</div>
+        <div class="desc">よくある質問のアコーディオン</div>
+      </div>
+      <div class="swell-block-card">
+        <div class="ico">🃏</div>
+        <div class="name">カード</div>
+        <div class="desc">記事・商品をカード形式で表示</div>
+      </div>
+    </div>
+
+    <div class="callout info" style="margin-top:16px;">
+      <span class="callout-ico">📌</span>
+      <div class="callout-body">
+        <strong>SWELL独自ブロックの使い方</strong>
+        <span>＋ ボタンをクリック → 検索欄に「SWELL」または使いたいブロック名を入力 → 一覧から選択して挿入します。ブロックを選択した状態で右サイドバーから色・スタイルを変更できます。</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==============================
+     SECTION 11: スライダー画像差し替え
+     ============================== -->
+<div class="sec container" id="s11">
+  <div class="sec-head swell-sec">
+    <div class="sec-num">🖼</div>
+    <div class="sec-title-wrap">
+      <div class="sec-label">カスタマイザー操作 <span style="background:rgba(255,255,255,0.2);border-radius:4px;padding:1px 8px;font-size:11px;margin-left:4px;">SWELL</span></div>
+      <div class="sec-title">トップページ スライダー画像の差し替え</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <div class="callout info">
+      <span class="callout-ico">ℹ️</span>
+      <div class="callout-body">
+        <strong>この操作でできること</strong>
+        <span>トップページに大きく表示される「メインビジュアル（スライダー）」の画像を追加・変更・削除できます。記事の編集画面ではなく、<strong>カスタマイザー</strong>（外観設定）から操作します。</span>
+      </div>
+    </div>
+
+    <!-- カスタマイザーを開く -->
+    <div class="sub" style="margin-top:20px;">
+      <div class="sub-title">① カスタマイザーを開く</div>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">管理画面から「外観」→「カスタマイズ」を開く</div>
+            <p class="step-desc">左メニューの <span class="path">外観 <span class="path-sep">▶</span> カスタマイズ</span> をクリックします。</p>
+            <div class="mock" style="margin-top:10px;">
+              <div class="mock-body" style="padding:0;">
+                <div class="admin-layout">
+                  <div class="admin-sidebar">
+                    <div class="admin-sidebar-item">🏠 ダッシュボード</div>
+                    <div class="admin-sidebar-item">📝 投稿</div>
+                    <div class="admin-sidebar-item">📄 固定ページ</div>
+                    <div class="admin-sidebar-item active">🎨 外観</div>
+                    <div style="padding:4px 14px 4px 28px;font-size:10px;color:#72aee6;background:#2271b1;">→ カスタマイズ ←</div>
+                    <div style="padding:4px 14px 4px 28px;font-size:10px;color:#9ca3af;">テーマ</div>
+                  </div>
+                  <div class="admin-main">
+                    <div style="font-size:12px;color:var(--gray-600);">「外観」の中の「カスタマイズ」をクリック</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="callout ok" style="margin-top:10px;">
+              <span class="callout-ico">💡</span>
+              <div class="callout-body">
+                <strong>別の開き方</strong>
+                <span>サイトのトップページを表示中に、画面上部の管理バーにある <span class="chip outline" style="font-size:11px;">カスタマイズ</span> をクリックしても同じ画面が開けます。</span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- メインビジュアルへ進む -->
+    <div class="sub">
+      <div class="sub-title">② 「トップページ」→「メインビジュアル」へ進む</div>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">カスタマイザー左パネルで「トップページ」をクリック</div>
+            <p class="step-desc">カスタマイザーが開くと、左側にメニューが表示されます。「トップページ」をクリックします。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">「メインビジュアル」をクリック</div>
+            <div class="mock" style="margin-top:8px;">
+              <div class="mock-body">
+                <div style="display:flex;gap:12px;">
+                  <!-- カスタマイザー左パネル風 -->
+                  <div style="width:200px;min-width:200px;background:var(--gray-100);border:1px solid var(--gray-200);border-radius:6px;padding:8px 0;font-size:12px;">
+                    <div style="padding:6px 14px;color:var(--gray-400);font-size:10px;font-weight:700;letter-spacing:0.5px;">▲ トップページ</div>
+                    <div style="padding:8px 14px;background:#fff;border-left:3px solid #7c3aed;font-weight:600;color:#7c3aed;">🖼 メインビジュアル ←</div>
+                    <div style="padding:7px 14px;color:var(--gray-600);">投稿リスト</div>
+                    <div style="padding:7px 14px;color:var(--gray-600);">フロントページ設定</div>
+                    <div style="padding:7px 14px;color:var(--gray-600);">お知らせバー</div>
+                  </div>
+                  <div style="flex:1;font-size:12px;color:var(--gray-600);padding:4px;">
+                    「メインビジュアル」をクリックすると<br>スライダー設定画面が開きます
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 画像を差し替える -->
+    <div class="sub">
+      <div class="sub-title">③ スライダー画像を設定・差し替える</div>
+
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">「メインビジュアルの表示内容」を確認</div>
+            <p class="step-desc">「スライドショー」が選択されていることを確認します（スライドではなく1枚のみの場合は「画像」が選択されています）。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">スライド画像を選択・変更する</div>
+            <p class="step-desc">「スライド画像[1]」「スライド画像[2]」…と枚数分の設定欄があります。それぞれ <strong>PC用</strong> と <strong>スマホ（SP）用</strong> の2種類を設定できます。</p>
+            <div class="mock" style="margin-top:10px;">
+              <div class="mock-body">
+                <div style="font-size:12px;font-weight:700;color:#7c3aed;margin-bottom:10px;">📋 メインビジュアル設定パネル</div>
+                <!-- スライド1 -->
+                <div style="border:1px solid #e9d5ff;border-radius:8px;overflow:hidden;margin-bottom:8px;">
+                  <div style="background:#f5f3ff;padding:7px 12px;font-size:12px;font-weight:600;color:#7c3aed;border-bottom:1px solid #e9d5ff;">
+                    🖼 スライド画像[1]
+                  </div>
+                  <div style="padding:10px 12px;display:flex;flex-direction:column;gap:7px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;">
+                      <span>PC用画像</span>
+                      <div style="display:flex;gap:5px;">
+                        <div class="chip purple" style="font-size:10px;">選択</div>
+                        <div class="chip outline" style="font-size:10px;">削除</div>
+                      </div>
+                    </div>
+                    <div style="background:var(--gray-100);height:48px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gray-400);">
+                      現在の画像サムネイル
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;">
+                      <span>スマホ（SP）用画像</span>
+                      <div style="display:flex;gap:5px;">
+                        <div class="chip purple" style="font-size:10px;">選択</div>
+                        <div class="chip outline" style="font-size:10px;">削除</div>
+                      </div>
+                    </div>
+                    <div style="background:var(--gray-100);height:36px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gray-400);">
+                      スマホ用の画像サムネイル
+                    </div>
+                  </div>
+                </div>
+                <!-- スライド2 -->
+                <div style="border:1px solid #e9d5ff;border-radius:8px;overflow:hidden;">
+                  <div style="background:#f5f3ff;padding:7px 12px;font-size:12px;font-weight:600;color:#7c3aed;border-bottom:1px solid #e9d5ff;">
+                    🖼 スライド画像[2]
+                  </div>
+                  <div style="padding:10px 12px;font-size:12px;color:var(--gray-400);text-align:center;">
+                    画像未設定（クリックして追加）
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">3</div>
+          <div class="step-content">
+            <div class="step-title">「選択」ボタンをクリックして新しい画像を選ぶ</div>
+            <p class="step-desc">「画像を選択」ダイアログが開きます。「ファイルをアップロード」タブから新しい画像をアップロードするか、「メディアライブラリ」から既存の画像を選択し、右下の <span class="chip purple">画像を選択</span> ボタンをクリックします。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">4</div>
+          <div class="step-content">
+            <div class="step-title">スライドにリンクを設定する（任意）</div>
+            <p class="step-desc">各スライドの設定欄に「リンク先URL」の入力欄があります。画像をクリックしたときにページに移動させたい場合はURLを入力します（不要なら空欄でOK）。</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="callout warn">
+        <span class="callout-ico">⚠️</span>
+        <div class="callout-body">
+          <strong>PC用とスマホ用は別々に設定</strong>
+          <span>PC用とスマホ（SP）用は独立した設定です。PC用だけ設定してスマホ用を空欄にすると、スマホではPC用画像がそのまま表示されます。できればスマホ用も設定することをおすすめします。</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 推奨サイズ -->
+    <div class="sub">
+      <div class="sub-title">📐 推奨画像サイズ</div>
+      <table class="tbl">
+        <thead><tr><th>用途</th><th>推奨サイズ</th><th>比率</th><th>ポイント</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>PC用</strong></td>
+            <td>1600 × 900 px</td>
+            <td>16:9</td>
+            <td>横幅が広いワイド画面に対応</td>
+          </tr>
+          <tr>
+            <td><strong>スマホ（SP）用</strong></td>
+            <td>750 × 500 px</td>
+            <td>3:2</td>
+            <td>縦長スマホ画面に合わせてトリミング不要</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout info" style="margin-top:10px;">
+        <span class="callout-ico">💡</span>
+        <div class="callout-body">
+          <strong>ファイルサイズに注意</strong>
+          <span>スライダー画像はファイルサイズが大きいとページの表示速度に影響します。アップロード前に <strong>500KB以下</strong> に圧縮することを推奨します（無料ツール「Squoosh」「TinyPNG」などで圧縮できます）。</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- スライド設定 -->
+    <div class="sub">
+      <div class="sub-title">⚙️ スライドの動作設定</div>
+      <p style="font-size:14px;color:var(--gray-600);margin-bottom:10px;">画像を2枚以上設定すると「スライダー設定」欄が表示され、動作を調整できます。</p>
+      <table class="tbl">
+        <thead><tr><th>設定項目</th><th>内容</th><th>目安</th></tr></thead>
+        <tbody>
+          <tr><td><strong>スライドの表示間隔</strong></td><td>次のスライドに切り替わるまでの秒数</td><td>4〜6秒が見やすい</td></tr>
+          <tr><td><strong>スライドの切替速度</strong></td><td>切り替え時のアニメーション速度</td><td>0.5〜1秒が自然</td></tr>
+          <tr><td><strong>自動再生</strong></td><td>スライドを自動でループ再生するか</td><td>通常はオン推奨</td></tr>
+          <tr><td><strong>ループ</strong></td><td>最後のスライドの後に最初に戻るか</td><td>通常はオン推奨</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 保存 -->
+    <div class="sub">
+      <div class="sub-title">④ 「公開」ボタンで保存する</div>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">右プレビューでデザインを確認する</div>
+            <p class="step-desc">カスタマイザーの右側にリアルタイムプレビューが表示されます。設定を変えるたびに即座に反映されるので、見た目を確認しながら調整できます。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">画面上部の「公開」ボタンをクリック</div>
+            <p class="step-desc">左パネル上部にある <span class="chip green">公開</span> ボタンをクリックすると設定が保存され、実際のサイトに反映されます。</p>
+            <div class="mock" style="margin-top:8px;">
+              <div class="mock-body">
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                  <div style="font-size:12px;color:var(--gray-600);">← 戻る　カスタマイズ中</div>
+                  <div class="chip green">公開 ← ここ！</div>
+                </div>
+              </div>
+            </div>
+            <div class="callout danger" style="margin-top:10px;">
+              <span class="callout-ico">🚫</span>
+              <div class="callout-body">
+                <strong>「公開」を押さないと変更は保存されません</strong>
+                <span>カスタマイザーはプレビューで確認できますが、<strong>必ず「公開」ボタンを押して保存</strong>してください。ブラウザを閉じると未保存の変更はすべて消えます。</span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==============================
+     Q&A
+     ============================== -->
+<div class="sec container" id="qa">
+  <div class="sec-head" style="background:linear-gradient(90deg,#0f5132,#198754);">
+    <div class="sec-num">Q</div>
+    <div class="sec-title-wrap">
+      <div class="sec-label">トラブルシューティング</div>
+      <div class="sec-title">よくある質問（Q&amp;A）</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <div style="display:flex;flex-direction:column;gap:16px;">
+
+      <div style="border:1px solid var(--gray-200);border-radius:8px;overflow:hidden;">
+        <div style="background:var(--blue-light);padding:12px 16px;font-size:14px;font-weight:700;color:var(--blue);">
+          Q: 画像がアップロードできない
+        </div>
+        <div style="padding:12px 16px;font-size:14px;color:var(--gray-800);">
+          A: 画像のファイルサイズが大きすぎる可能性があります。<strong>5MB以下</strong>の画像を使用してください。また形式が JPEG・PNG・WebP・GIF 以外の場合はアップロードできません。
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--gray-200);border-radius:8px;overflow:hidden;">
+        <div style="background:var(--blue-light);padding:12px 16px;font-size:14px;font-weight:700;color:var(--blue);">
+          Q: 記事を公開したのにサイトに表示されない
+        </div>
+        <div style="padding:12px 16px;font-size:14px;color:var(--gray-800);">
+          A: 一度「下書きに切り替え」してから再度「公開」ボタンを押してみてください。それでも表示されない場合は、キャッシュが残っている可能性があります。ブラウザの画面を強制リロード（<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd>）してみてください。
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--gray-200);border-radius:8px;overflow:hidden;">
+        <div style="background:var(--blue-light);padding:12px 16px;font-size:14px;font-weight:700;color:var(--blue);">
+          Q: 右サイドバーが表示されない
+        </div>
+        <div style="padding:12px 16px;font-size:14px;color:var(--gray-800);">
+          A: 右上の <span class="chip outline" style="font-size:11px;">⚙ 設定</span> アイコンをクリックすると表示/非表示が切り替えられます。また「投稿」タブと「ブロック」タブを混同している場合があります。記事全体の設定には「<strong>投稿</strong>」タブを選択してください。
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--gray-200);border-radius:8px;overflow:hidden;">
+        <div style="background:var(--blue-light);padding:12px 16px;font-size:14px;font-weight:700;color:var(--blue);">
+          Q: 誤って公開してしまった記事を非公開にしたい
+        </div>
+        <div style="padding:12px 16px;font-size:14px;color:var(--gray-800);">
+          A: 記事の編集画面で右上の <span class="chip outline" style="font-size:11px;">下書きへ切り替え</span> ボタンをクリックしてください（本マニュアル「<a href="#s5" style="color:var(--blue);">Section 5</a>」参照）。
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--gray-200);border-radius:8px;overflow:hidden;">
+        <div style="background:var(--blue-light);padding:12px 16px;font-size:14px;font-weight:700;color:var(--blue);">
+          Q: ブロックエディターが重くて使いにくい
+        </div>
+        <div style="padding:12px 16px;font-size:14px;color:var(--gray-800);">
+          A: ブラウザのタブを他に多く開いている場合は閉じてみてください。SWELLはGutenbergへの最適化がされているため、他のプラグインとの競合が原因の場合もあります。プラグインを一時停止してご確認ください。
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--gray-200);border-radius:8px;overflow:hidden;">
+        <div style="background:var(--blue-light);padding:12px 16px;font-size:14px;font-weight:700;color:var(--blue);">
+          Q: アイキャッチ画像が記事上に2重で表示される
+        </div>
+        <div style="padding:12px 16px;font-size:14px;color:var(--gray-800);">
+          A: SWELLの設定で「アイキャッチをコンテンツ上に表示」がオンになっている場合、記事本文内にも同じ画像を入れると2重に表示されます。記事本文内の画像ブロックを削除するか、SWELLカスタマイザーの設定を確認してください。
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ==============================
+     FOOTER
+     ============================== -->
+<div class="footer">
+  <p>WordPress 更新マニュアル｜SWELL テーマ対応 Gutenbergエディター版</p>
+  <p style="margin-top:4px;">ご不明な点はいつでもご連絡ください。</p>
+</div>
+
+</body>
+</html>
