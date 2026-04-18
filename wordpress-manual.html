@@ -953,7 +953,7 @@ kbd{
     <!-- マーカーセクション -->
     <div class="sub">
       <div class="sub-title">🖍️ マーカー（蛍光ペン）の使い方</div>
-      <p style="font-size:14px;color:var(--gray-600);margin-bottom:14px;">文字に蛍光ペン風の背景色をつけて強調できます。SWELLではカラフルなマーカー色が利用可能です。</p>
+      <p style="font-size:14px;color:var(--gray-600);margin-bottom:14px;">SWELL専用のマーカー装飾で、文字を蛍光ペンのように強調できます。色は <strong>オレンジ・イエロー・グリーン・ブルー</strong> の4色から選べます。</p>
       <ul class="steps">
         <li class="step-item">
           <div class="step-n">1</div>
@@ -965,37 +965,27 @@ kbd{
         <li class="step-item">
           <div class="step-n">2</div>
           <div class="step-content">
-            <div class="step-title">ツールバーの「A▾」をクリック → 「背景色」を選ぶ</div>
-            <p class="step-desc">ツールバーの <span class="chip outline" style="font-size:11px;">A▾</span> をクリックすると文字色・背景色パネルが開きます。「背景色」の欄から使いたい色をクリックするとマーカーが引かれます。</p>
+            <div class="step-title">ツールバーの「マーカー」ボタンから色を選ぶ</div>
+            <p class="step-desc">ツールバーに表示される <span class="chip outline" style="font-size:11px;">🖍 マーカー ▾</span> をクリックすると4色のカラーパレットが開きます。使いたい色をクリックするとマーカーが引かれます。</p>
             <div class="mock" style="margin-top:10px;">
               <div class="mock-body">
-                <div style="font-size:12px;color:var(--gray-400);margin-bottom:8px;">▼「A▾」クリック後に開くパネル</div>
+                <div style="font-size:12px;color:var(--gray-400);margin-bottom:8px;">▼ マーカーのカラーパレット（4色）</div>
                 <div style="border:1px solid var(--gray-200);border-radius:8px;overflow:hidden;max-width:270px;">
-                  <div style="padding:10px 14px;border-bottom:1px solid var(--gray-100);">
-                    <div style="font-size:11px;font-weight:700;color:var(--gray-600);margin-bottom:7px;">🔤 文字色</div>
-                    <div style="display:flex;gap:6px;flex-wrap:wrap;">
-                      <div style="width:22px;height:22px;background:#e53e3e;border-radius:4px;cursor:pointer;"></div>
-                      <div style="width:22px;height:22px;background:#d97706;border-radius:4px;cursor:pointer;"></div>
-                      <div style="width:22px;height:22px;background:#2271b1;border-radius:4px;cursor:pointer;"></div>
-                      <div style="width:22px;height:22px;background:#00a32a;border-radius:4px;cursor:pointer;"></div>
-                      <div style="width:22px;height:22px;background:#7c3aed;border-radius:4px;cursor:pointer;"></div>
-                    </div>
-                  </div>
-                  <div style="padding:10px 14px;background:var(--gray-50);">
-                    <div style="font-size:11px;font-weight:700;color:var(--gray-600);margin-bottom:7px;">🖍 背景色（マーカー）← ここ！</div>
-                    <div style="display:flex;gap:6px;flex-wrap:wrap;">
-                      <div title="黄" style="width:22px;height:22px;background:#fef9c3;border:1px solid #d4a017;border-radius:4px;cursor:pointer;"></div>
-                      <div title="緑" style="width:22px;height:22px;background:#d1fae5;border:1px solid #6ee7b7;border-radius:4px;cursor:pointer;"></div>
-                      <div title="赤" style="width:22px;height:22px;background:#fee2e2;border:1px solid #fca5a5;border-radius:4px;cursor:pointer;"></div>
-                      <div title="青" style="width:22px;height:22px;background:#dbeafe;border:1px solid #93c5fd;border-radius:4px;cursor:pointer;"></div>
-                      <div title="紫" style="width:22px;height:22px;background:#ede9fe;border:1px solid #c4b5fd;border-radius:4px;cursor:pointer;"></div>
+                  <div style="padding:12px 14px;background:var(--gray-50);">
+                    <div style="font-size:11px;font-weight:700;color:var(--gray-600);margin-bottom:9px;">🖍 マーカーの色</div>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                      <div title="オレンジ" style="width:28px;height:28px;background:#ffb199;border:1px solid #ff8866;border-radius:4px;cursor:pointer;"></div>
+                      <div title="イエロー" style="width:28px;height:28px;background:#fff176;border:1px solid #ffd54f;border-radius:4px;cursor:pointer;"></div>
+                      <div title="グリーン" style="width:28px;height:28px;background:#aed581;border:1px solid #7cb342;border-radius:4px;cursor:pointer;"></div>
+                      <div title="ブルー" style="width:28px;height:28px;background:#81d4fa;border:1px solid #29b6f6;border-radius:4px;cursor:pointer;"></div>
                     </div>
                   </div>
                 </div>
                 <div style="margin-top:12px;font-size:13px;line-height:2;">
-                  例：<span style="background:#fef9c3;padding:0 3px;">黄マーカー</span>
-                  <span style="background:#d1fae5;padding:0 3px;">緑マーカー</span>
-                  <span style="background:#fee2e2;padding:0 3px;">赤マーカー</span>
+                  例：<span style="background:linear-gradient(transparent 60%,#ffb199 60%);padding:0 2px;">オレンジ</span>
+                  <span style="background:linear-gradient(transparent 60%,#fff176 60%);padding:0 2px;">イエロー</span>
+                  <span style="background:linear-gradient(transparent 60%,#aed581 60%);padding:0 2px;">グリーン</span>
+                  <span style="background:linear-gradient(transparent 60%,#81d4fa 60%);padding:0 2px;">ブルー</span>
                 </div>
               </div>
             </div>
@@ -1005,14 +995,7 @@ kbd{
           <div class="step-n">3</div>
           <div class="step-content">
             <div class="step-title">マーカーを解除するには</div>
-            <p class="step-desc">マーカーを引いた文字を選択して再度「A▾」→「背景色なし」をクリックすると解除されます。</p>
-            <div class="callout info" style="margin-top:8px;">
-              <span class="callout-ico">💡</span>
-              <div class="callout-body">
-                <strong>SWELLの「マーカー」装飾との違い</strong>
-                <span>ツールバー <span class="chip outline" style="font-size:11px;">⋮</span> の「その他」→「マーカー」を選ぶと、SWELL専用の波線・二重線マーカーが使えます。より個性的な強調表現が可能です。</span>
-              </div>
-            </div>
+            <p class="step-desc">マーカーを引いた文字を選択して、同じ色をもう一度クリックすると解除されます。</p>
           </div>
         </li>
       </ul>
@@ -1048,13 +1031,12 @@ kbd{
                   <div style="padding:10px 14px;">
                     <div style="font-size:11px;font-weight:700;color:var(--gray-600);margin-bottom:8px;">タイポグラフィ</div>
                     <div style="display:flex;gap:6px;margin-bottom:6px;">
+                      <div class="chip outline" style="font-size:11px;">XS</div>
                       <div class="chip outline" style="font-size:11px;">S</div>
-                      <div class="chip outline" style="font-size:11px;">M</div>
                       <div class="chip blue" style="font-size:11px;">L</div>
                       <div class="chip outline" style="font-size:11px;">XL</div>
-                      <div class="chip outline" style="font-size:11px;">XXL</div>
                     </div>
-                    <div style="font-size:11px;color:var(--gray-400);">または「カスタム」で数値入力</div>
+                    <div style="font-size:11px;color:var(--gray-400);">標準サイズ（M）はデフォルト／「カスタム」で数値指定も可</div>
                   </div>
                 </div>
               </div>
@@ -1066,13 +1048,13 @@ kbd{
           <div class="step-content">
             <div class="step-title">プリセットサイズから選ぶ</div>
             <table class="tbl">
-              <thead><tr><th>サイズ</th><th>目安</th><th>使いどころ</th></tr></thead>
+              <thead><tr><th>サイズ</th><th>使いどころ</th></tr></thead>
               <tbody>
-                <tr><td style="font-size:11px;"><strong>S</strong>（小）</td><td>約13px</td><td>注釈・補足テキスト</td></tr>
-                <tr><td style="font-size:14px;"><strong>M</strong>（中）</td><td>約16px（標準）</td><td>本文の標準サイズ</td></tr>
-                <tr><td style="font-size:17px;"><strong>L</strong>（大）</td><td>約20px</td><td>強調したい一文</td></tr>
-                <tr><td style="font-size:20px;"><strong>XL</strong>（特大）</td><td>約24px</td><td>リード文・キャッチコピー</td></tr>
-                <tr><td style="font-size:24px;"><strong>XXL</strong>（超特大）</td><td>約32px</td><td>見出し代わり（H2非推奨時）</td></tr>
+                <tr><td style="font-size:12px;"><strong>XS</strong>（極小）</td><td>注釈・細かい補足</td></tr>
+                <tr><td style="font-size:13px;"><strong>S</strong>（小）</td><td>補足テキスト</td></tr>
+                <tr><td style="font-size:14px;"><strong>M</strong>（標準）</td><td>本文の標準サイズ（デフォルト）</td></tr>
+                <tr><td style="font-size:17px;"><strong>L</strong>（大）</td><td>強調したい一文</td></tr>
+                <tr><td style="font-size:21px;"><strong>XL</strong>（特大）</td><td>リード文・キャッチコピー</td></tr>
               </tbody>
             </table>
             <div class="callout info" style="margin-top:10px;">
