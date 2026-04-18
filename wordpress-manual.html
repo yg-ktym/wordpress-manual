@@ -413,6 +413,25 @@ kbd{
 .footer{text-align:center;padding:36px 16px;font-size:12px;color:var(--gray-400);}
 
 /* ============================================
+   PAGE TOP BUTTON
+   ============================================ */
+.pagetop{
+  position:fixed;bottom:24px;right:24px;
+  width:48px;height:48px;
+  background:var(--blue);color:#fff;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;line-height:1;
+  cursor:pointer;box-shadow:var(--shadow-lg);
+  text-decoration:none;z-index:999;
+  transition:opacity 0.3s, background 0.2s, transform 0.2s, box-shadow 0.2s;
+  border:none;
+  opacity:0;
+}
+.pagetop:hover{background:var(--blue-dark);transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,0.18);}
+@media(max-width:640px){.pagetop{bottom:16px;right:16px;width:42px;height:42px;font-size:17px;}}
+
+/* ============================================
    PRINT
    ============================================ */
 @media print{
@@ -435,7 +454,7 @@ kbd{
     <div class="header-tags">
       <span class="header-tag">✅ Gutenberg（ブロックエディター）</span>
       <span class="header-tag">✅ SWELL テーマ対応</span>
-      <span class="header-tag">✅ 全9項目</span>
+      <span class="header-tag">✅ 全12項目</span>
     </div>
   </div>
 </div>
@@ -447,9 +466,9 @@ kbd{
   <div class="toc-head">📋 目次</div>
   <div class="toc-groups">
 
-    <!-- グループ1: 基本操作 -->
+    <!-- グループ1: はじめに -->
     <div class="toc-group">
-      <div class="toc-group-label">📌 基本操作</div>
+      <div class="toc-group-label">📌 はじめに</div>
 
       <div class="toc-section">
         <a class="toc-item" href="#s1"><span class="toc-num">1</span>ログイン方法</a>
@@ -459,89 +478,97 @@ kbd{
           <a class="toc-sub" href="#s1">ダッシュボードで完了</a>
         </div>
       </div>
-
-      <div class="toc-section">
-        <a class="toc-item" href="#s2"><span class="toc-num">2</span>新規記事の投稿</a>
-        <div class="toc-subs">
-          <a class="toc-sub" href="#s2">タイトル・本文を入力する</a>
-          <a class="toc-sub" href="#s2">改行・改段落の方法</a>
-          <a class="toc-sub" href="#s2">カテゴリーを選択する</a>
-          <a class="toc-sub" href="#s2">🏷️ タグを設定する</a>
-          <a class="toc-sub" href="#s2">「公開」ボタンで投稿完了</a>
-        </div>
-      </div>
     </div>
 
-    <!-- グループ2: テキスト編集 -->
+    <!-- グループ2: 記事の更新（よく使う） -->
     <div class="toc-group">
-      <div class="toc-group-label">✏️ テキスト編集</div>
+      <div class="toc-group-label" style="background:linear-gradient(90deg,#0369a1,#0ea5e9);">✏️ 記事の更新（よく使う操作）</div>
 
       <div class="toc-section">
-        <a class="toc-item" href="#s3"><span class="toc-num">3</span>文字の装飾と見出しの設定</a>
+        <a class="toc-item" href="#s2"><span class="toc-num">2</span>既存記事を開いて編集する</a>
         <div class="toc-subs">
-          <a class="toc-sub" href="#s3">🔤 文字の装飾（太字・斜体・カラーなど）</a>
+          <a class="toc-sub" href="#s2">✏️ 投稿一覧から記事を編集する</a>
+          <a class="toc-sub" href="#s2">🗑️ 記事を削除する</a>
+        </div>
+      </div>
+
+      <div class="toc-section">
+        <a class="toc-item" href="#s3"><span class="toc-num">3</span>テキスト編集・ツールバーの使い方</a>
+        <div class="toc-subs">
+          <a class="toc-sub" href="#s3">🔤 太字・斜体・下線（基本装飾）</a>
+          <a class="toc-sub" href="#s3">🎨 テキスト色・背景色の変更</a>
+          <a class="toc-sub" href="#s3">📏 テキストサイズの変更</a>
+          <a class="toc-sub" href="#s3">🖍️ マーカー（蛍光ペン）の使い方</a>
           <a class="toc-sub" href="#s3">📑 見出しの設定（H2・H3・H4）</a>
         </div>
       </div>
 
       <div class="toc-section">
-        <a class="toc-item" href="#s6"><span class="toc-num">6</span>リンクの挿入</a>
+        <a class="toc-item" href="#s4"><span class="toc-num">4</span>公開記事を下書きに変更</a>
         <div class="toc-subs">
-          <a class="toc-sub" href="#s6">🔗 テキストにリンクを設定する</a>
-          <a class="toc-sub" href="#s6">✂️ リンクを削除する</a>
-          <a class="toc-sub" href="#s6">🔘 SWELLボタンブロックを使う</a>
+          <a class="toc-sub" href="#s4">下書きへ切り替え（方法①②）</a>
+          <a class="toc-sub" href="#s4">🔒 非公開・パスワード保護</a>
+          <a class="toc-sub" href="#s4">📅 予約投稿について</a>
         </div>
       </div>
     </div>
 
-    <!-- グループ3: 投稿管理 -->
+    <!-- グループ3: 画像・動画を挿入する -->
     <div class="toc-group">
-      <div class="toc-group-label">📂 投稿管理</div>
+      <div class="toc-group-label">🖼 画像・動画を挿入する</div>
 
       <div class="toc-section">
-        <a class="toc-item" href="#s4"><span class="toc-num">4</span>投稿一覧からの編集・削除</a>
+        <a class="toc-item" href="#s5"><span class="toc-num">5</span>画像のアップロード・差し替え</a>
         <div class="toc-subs">
-          <a class="toc-sub" href="#s4">✏️ 記事を編集する</a>
-          <a class="toc-sub" href="#s4">🗑️ 記事を削除する</a>
-          <a class="toc-sub" href="#s4">📦 複数記事をまとめて削除</a>
+          <a class="toc-sub" href="#s5">🖼️ 記事内に画像を挿入する</a>
+          <a class="toc-sub" href="#s5">🔄 既存の画像を差し替える</a>
         </div>
       </div>
 
       <div class="toc-section">
-        <a class="toc-item" href="#s5"><span class="toc-num">5</span>公開記事を下書きに変更</a>
+        <a class="toc-item" href="#s6"><span class="toc-num">6</span>動画の挿入</a>
         <div class="toc-subs">
-          <a class="toc-sub" href="#s5">下書きへ切り替え（方法①②）</a>
-          <a class="toc-sub" href="#s5">🔒 非公開・パスワード保護</a>
-          <a class="toc-sub" href="#s5">📅 予約投稿について</a>
+          <a class="toc-sub" href="#s6">YouTube動画を埋め込む</a>
+          <a class="toc-sub" href="#s6">動画ファイルを直接アップロード</a>
+        </div>
+      </div>
+
+      <div class="toc-section">
+        <a class="toc-item" href="#s7"><span class="toc-num">7</span>アイキャッチ画像の設定</a>
+        <div class="toc-subs">
+          <a class="toc-sub" href="#s7">アイキャッチを設定する手順</a>
+          <a class="toc-sub" href="#s7">🗑️ アイキャッチ画像を削除する</a>
         </div>
       </div>
     </div>
 
-    <!-- グループ4: メディア管理 -->
+    <!-- グループ4: 新規記事・応用操作 -->
     <div class="toc-group">
-      <div class="toc-group-label">🖼 メディア管理</div>
+      <div class="toc-group-label">📝 新規記事の投稿・応用</div>
 
       <div class="toc-section">
-        <a class="toc-item" href="#s7"><span class="toc-num">7</span>ブロックの移動とコピー</a>
+        <a class="toc-item" href="#s8"><span class="toc-num">8</span>新規記事の投稿（全手順）</a>
         <div class="toc-subs">
-          <a class="toc-sub" href="#s7">↕️ ブロックを移動する</a>
-          <a class="toc-sub" href="#s7">📋 ブロックをコピー（複製）する</a>
+          <a class="toc-sub" href="#s8">タイトル・本文を入力する</a>
+          <a class="toc-sub" href="#s8">⌨️ 改行は Shift+Enter を推奨</a>
+          <a class="toc-sub" href="#s8">カテゴリー・タグを設定する</a>
+          <a class="toc-sub" href="#s8">「公開」ボタンで投稿完了</a>
         </div>
       </div>
 
       <div class="toc-section">
-        <a class="toc-item" href="#s8"><span class="toc-num">8</span>画像のアップロード・差し替え</a>
+        <a class="toc-item" href="#s9"><span class="toc-num">9</span>リンクの挿入</a>
         <div class="toc-subs">
-          <a class="toc-sub" href="#s8">🖼️ 記事内に画像を挿入する</a>
-          <a class="toc-sub" href="#s8">🔄 既存の画像を差し替える</a>
+          <a class="toc-sub" href="#s9">🔗 テキストにリンクを設定する</a>
+          <a class="toc-sub" href="#s9">🔘 SWELLボタンブロックを使う</a>
         </div>
       </div>
 
       <div class="toc-section">
-        <a class="toc-item" href="#s9"><span class="toc-num">9</span>アイキャッチ画像の設定</a>
+        <a class="toc-item" href="#s10"><span class="toc-num">10</span>ブロックの移動とコピー</a>
         <div class="toc-subs">
-          <a class="toc-sub" href="#s9">アイキャッチを設定する手順</a>
-          <a class="toc-sub" href="#s9">🗑️ アイキャッチ画像を削除する</a>
+          <a class="toc-sub" href="#s10">↕️ ブロックを移動する</a>
+          <a class="toc-sub" href="#s10">📋 ブロックをコピー（複製）する</a>
         </div>
       </div>
     </div>
@@ -551,21 +578,21 @@ kbd{
       <div class="toc-group-label swell">🌊 SWELL 活用</div>
 
       <div class="toc-section">
-        <a class="toc-item" href="#s10"><span class="toc-num swell">💡</span>SWELL独自ブロックの活用</a>
+        <a class="toc-item" href="#s11"><span class="toc-num swell">11</span>SWELL独自ブロックの活用</a>
         <div class="toc-subs">
-          <a class="toc-sub" href="#s10">ふきだし・ボックス・ボタン</a>
-          <a class="toc-sub" href="#s10">ステップ・FAQ・カードなど</a>
+          <a class="toc-sub" href="#s11">ふきだし・ボックス・ボタン</a>
+          <a class="toc-sub" href="#s11">ステップ・FAQ・カードなど</a>
         </div>
       </div>
 
       <div class="toc-section">
-        <a class="toc-item" href="#s11"><span class="toc-num swell">🖼</span>スライダー画像の差し替え</a>
+        <a class="toc-item" href="#s12"><span class="toc-num swell">12</span>スライダー画像の差し替え</a>
         <div class="toc-subs">
-          <a class="toc-sub" href="#s11">① カスタマイザーを開く</a>
-          <a class="toc-sub" href="#s11">② メインビジュアルへ進む</a>
-          <a class="toc-sub" href="#s11">③ スライダー画像を設定・差し替え</a>
-          <a class="toc-sub" href="#s11">📐 推奨画像サイズ</a>
-          <a class="toc-sub" href="#s11">④ 「公開」ボタンで保存</a>
+          <a class="toc-sub" href="#s12">① カスタマイザーを開く</a>
+          <a class="toc-sub" href="#s12">② メインビジュアルへ進む</a>
+          <a class="toc-sub" href="#s12">③ スライダー画像を設定・差し替え</a>
+          <a class="toc-sub" href="#s12">📐 推奨画像サイズ</a>
+          <a class="toc-sub" href="#s12">④ 「公開」ボタンで保存</a>
         </div>
       </div>
     </div>
@@ -659,346 +686,14 @@ kbd{
 </div>
 
 <!-- ==============================
-     SECTION 2: 新規投稿
+     SECTION 4: 投稿一覧 編集・削除
      ============================== -->
 <div class="sec container" id="s2">
   <div class="sec-head">
     <div class="sec-num">2</div>
     <div class="sec-title-wrap">
-      <div class="sec-label">基本操作</div>
-      <div class="sec-title">新規記事の投稿</div>
-    </div>
-  </div>
-  <div class="sec-body">
-
-    <ul class="steps">
-      <li class="step-item">
-        <div class="step-n">1</div>
-        <div class="step-content">
-          <div class="step-title">「投稿 ▶ 新規追加」をクリック</div>
-          <p class="step-desc">左メニューの <span class="path">投稿 <span class="path-sep">▶</span> 新規追加</span> をクリックします。</p>
-          <div class="mock" style="margin-top:10px;">
-            <div class="mock-body" style="padding:0;">
-              <div class="admin-layout">
-                <div class="admin-sidebar">
-                  <div class="admin-sidebar-item">🏠 ダッシュボード</div>
-                  <div class="admin-sidebar-item active">📝 投稿</div>
-                  <div style="padding:4px 14px 4px 28px;font-size:10px;color:#9ca3af;">一覧</div>
-                  <div style="padding:4px 14px 4px 28px;font-size:10px;color:#72aee6;background:#2271b1;">→ 新規追加 ←</div>
-                  <div style="padding:4px 14px 4px 28px;font-size:10px;color:#9ca3af;">カテゴリー</div>
-                  <div class="admin-sidebar-item">📄 固定ページ</div>
-                  <div class="admin-sidebar-item">🖼 メディア</div>
-                </div>
-                <div class="admin-main">
-                  <div style="font-size:12px;color:var(--gray-600);">← 「投稿」の中の「新規追加」をクリックします</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li class="step-item">
-        <div class="step-n">2</div>
-        <div class="step-content">
-          <div class="step-title">タイトルを入力する</div>
-          <p class="step-desc">「タイトルを追加」と薄く書いてある部分をクリックし、記事のタイトルを入力します。</p>
-        </div>
-      </li>
-      <li class="step-item">
-        <div class="step-n">3</div>
-        <div class="step-content">
-          <div class="step-title">本文を入力する</div>
-          <p class="step-desc">タイトルの下にある本文エリアをクリックすると <strong>「＋」マーク</strong>が表示されます。そのまま文字を入力するか、＋をクリックしてブロックを選んで作成します。</p>
-          <div class="editor-mock" style="margin-top:10px;">
-            <div class="editor-topbar">
-              <div class="editor-topbar-left">
-                <div class="editor-wplogo">W</div>
-                <div style="font-size:11px;color:#c3c4c7;">← 戻る</div>
-                <div style="font-size:11px;color:#c3c4c7;">＋ブロック追加</div>
-              </div>
-              <div class="editor-topbar-right">
-                <div class="chip outline" style="font-size:11px;">下書き保存</div>
-                <div class="chip outline" style="font-size:11px;">プレビュー</div>
-                <div class="chip green" style="font-size:11px;">公開</div>
-                <div style="width:28px;height:28px;background:rgba(255,255,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#c3c4c7;">⚙</div>
-              </div>
-            </div>
-            <div style="display:flex;">
-              <div class="editor-content" style="flex:1;">
-                <div class="editor-title-input" style="color:var(--gray-400);">タイトルを追加</div>
-                <div class="editor-block">本文を入力、またはスラッシュを入力してブロックを選択…</div>
-                <div style="text-align:center;font-size:20px;color:var(--gray-400);margin:8px 0;">＋</div>
-              </div>
-              <div class="editor-sidebar">
-                <div class="sidebar-tab">
-                  <div class="sidebar-tab-item active">投稿</div>
-                  <div class="sidebar-tab-item">ブロック</div>
-                </div>
-                <div class="sidebar-section">
-                  <div class="sidebar-section-title">ステータスと公開状態</div>
-                  <div class="sidebar-row"><span>公開状態</span><span class="chip outline" style="font-size:10px;">公開</span></div>
-                  <div class="sidebar-row"><span>日時</span><span style="font-size:11px;color:var(--gray-400);">今すぐ</span></div>
-                </div>
-                <div class="sidebar-section">
-                  <div class="sidebar-section-title">カテゴリー</div>
-                  <div style="font-size:12px;color:var(--gray-600);">☑ お知らせ<br>□ ブログ</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="callout info" style="margin-top:10px;">
-            <span class="callout-ico">💡</span>
-            <div class="callout-body">
-              <strong>右サイドバーは「投稿」タブを選択</strong>
-              <span>右上の <span class="chip outline" style="font-size:11px;">⚙</span> アイコンでサイドバーの表示/非表示を切り替えられます。カテゴリやアイキャッチを設定するには <strong>「投稿」タブ</strong> が選ばれていることを確認してください。</span>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li class="step-item">
-        <div class="step-n">4</div>
-        <div class="step-content">
-          <div class="step-title">改行・改段落の方法</div>
-          <table class="tbl">
-            <thead><tr><th>操作</th><th>キー</th><th>効果</th></tr></thead>
-            <tbody>
-              <tr><td>改段落（新しいブロック作成）</td><td><kbd>Enter</kbd></td><td>次のブロックへ移動</td></tr>
-              <tr><td>改行（同じブロック内）</td><td><kbd>Shift</kbd> + <kbd>Enter</kbd></td><td>ブロック内で行を変える</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </li>
-      <li class="step-item">
-        <div class="step-n">5</div>
-        <div class="step-content">
-          <div class="step-title">カテゴリーを選択する</div>
-          <p class="step-desc">右サイドバー（「投稿」タブ）の「カテゴリー」欄にチェックを入れます。新しいカテゴリーを追加したい場合は「新規カテゴリーを追加」をクリックして名前を入力します。</p>
-        </div>
-      </li>
-      <li class="step-item">
-        <div class="step-n">6</div>
-        <div class="step-content">
-          <div class="step-title">タグを設定する</div>
-          <p class="step-desc">カテゴリーの下にある「タグ」欄に記事のキーワードを入力し、<kbd>Enter</kbd> または <kbd>，</kbd> で確定します。複数設定できます。</p>
-
-          <!-- タグとカテゴリーの違い -->
-          <div class="callout info" style="margin-top:10px;">
-            <span class="callout-ico">🏷️</span>
-            <div class="callout-body">
-              <strong>タグとカテゴリーの違い</strong>
-              <span>カテゴリーは記事をジャンルでまとめる「フォルダ」、タグは記事の内容を示す「値札（キーワード）」です。カテゴリーは階層構造を持ちますが、タグは階層なし・複数設定が基本です。</span>
-            </div>
-          </div>
-
-          <!-- タグ入力のモック -->
-          <div class="mock" style="margin-top:12px;">
-            <div class="mock-body">
-              <div style="font-size:12px;color:var(--gray-400);margin-bottom:8px;">▼ サイドバー「投稿」タブのタグ欄</div>
-              <div style="border:1px solid var(--gray-200);border-radius:8px;overflow:hidden;">
-                <div style="background:var(--gray-100);padding:6px 10px;font-size:11px;font-weight:700;color:var(--gray-600);letter-spacing:0.5px;border-bottom:1px solid var(--gray-200);">タグ</div>
-                <div style="padding:10px 12px;">
-                  <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;">
-                    <span style="background:var(--blue-light);border:1px solid #c5ddf5;color:var(--blue);border-radius:20px;padding:3px 10px;font-size:12px;display:flex;align-items:center;gap:5px;">夏祭り <span style="color:var(--gray-400);cursor:pointer;">×</span></span>
-                    <span style="background:var(--blue-light);border:1px solid #c5ddf5;color:var(--blue);border-radius:20px;padding:3px 10px;font-size:12px;display:flex;align-items:center;gap:5px;">2025年 <span style="color:var(--gray-400);cursor:pointer;">×</span></span>
-                    <span style="background:var(--blue-light);border:1px solid #c5ddf5;color:var(--blue);border-radius:20px;padding:3px 10px;font-size:12px;display:flex;align-items:center;gap:5px;">限定 <span style="color:var(--gray-400);cursor:pointer;">×</span></span>
-                  </div>
-                  <div style="border:1px solid var(--gray-200);border-radius:5px;padding:6px 10px;font-size:12px;color:var(--gray-400);">タグを追加… Enter または , で確定</div>
-                  <div style="font-size:11px;color:var(--blue);margin-top:6px;cursor:pointer;">よく使うタグから選択</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- タグ運用ポイント -->
-          <table class="tbl" style="margin-top:12px;">
-            <thead><tr><th>ポイント</th><th>内容</th></tr></thead>
-            <tbody>
-              <tr><td>🔢 <strong>数は2〜5個が目安</strong></td><td>付けすぎると読者が混乱します。最重要キーワードに絞りましょう</td></tr>
-              <tr><td>✏️ <strong>表記を統一する</strong></td><td>「WordPress」と「ワードプレス」など同じ意味のタグは作らない</td></tr>
-              <tr><td>🔁 <strong>カテゴリーと重複させない</strong></td><td>カテゴリーと同じ名前のタグは冗長です。異なる軸で設定しましょう</td></tr>
-            </tbody>
-          </table>
-
-          <div class="callout warn" style="margin-top:10px;">
-            <span class="callout-ico">⚠️</span>
-            <div class="callout-body">
-              <strong>スラッグは後から管理画面で半角英数字に修正を推奨</strong>
-              <span>記事編集画面からタグを追加すると、スラッグ（URLの一部）が日本語のままになることがあります。管理画面の <span class="path">投稿 <span class="path-sep">▶</span> タグ</span> から編集できます（例: 夏祭り → <code style="font-size:11px;background:var(--gray-100);padding:1px 5px;border-radius:3px;">summer-festival</code>）。</span>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li class="step-item">
-        <div class="step-n">7</div>
-        <div class="step-content">
-          <div class="step-title">プレビューで確認する</div>
-          <p class="step-desc">右上の <span class="chip outline" style="font-size:11px;">プレビュー</span> をクリックすると、実際のサイトでどう見えるか確認できます。</p>
-        </div>
-      </li>
-      <li class="step-item">
-        <div class="step-n">8</div>
-        <div class="step-content">
-          <div class="step-title">「公開」ボタンをクリックして投稿完了</div>
-          <p class="step-desc">右上の <span class="chip green">公開</span> をクリック → 確認ダイアログで再度 <span class="chip green">公開</span> をクリックするとサイトに公開されます。</p>
-          <div class="callout ok">
-            <span class="callout-ico">✅</span>
-            <div class="callout-body">
-              <strong>すぐに公開しない場合</strong>
-              <span><span class="chip outline" style="font-size:11px;">下書き保存</span> をクリックすれば、内容を保存したまま公開せずに一時保存できます。</span>
-            </div>
-          </div>
-        </div>
-      </li>
-
-    </ul>
-
-  </div>
-</div>
-
-<!-- ==============================
-     SECTION 3: 文字の装飾と見出し
-     ============================== -->
-<div class="sec container" id="s3">
-  <div class="sec-head">
-    <div class="sec-num">3</div>
-    <div class="sec-title-wrap">
-      <div class="sec-label">テキスト編集</div>
-      <div class="sec-title">文字の装飾と見出しの設定</div>
-    </div>
-  </div>
-  <div class="sec-body">
-
-    <div class="sub">
-      <div class="sub-title">🔤 文字の装飾（太字・斜体・カラーなど）</div>
-      <ul class="steps">
-        <li class="step-item">
-          <div class="step-n">1</div>
-          <div class="step-content">
-            <div class="step-title">装飾したい文字を選択する</div>
-            <p class="step-desc">マウスでドラッグして文字を選択すると、背景が青くハイライトされます。</p>
-          </div>
-        </li>
-        <li class="step-item">
-          <div class="step-n">2</div>
-          <div class="step-content">
-            <div class="step-title">ツールバーが自動表示される</div>
-            <p class="step-desc">選択すると文字の上にツールバーがポップアップします。</p>
-            <div class="mock" style="margin-top:10px;">
-              <div class="mock-body">
-                <div style="font-size:12px;color:var(--gray-400);margin-bottom:6px;">▼ 選択時に表示されるツールバー</div>
-                <div class="editor-toolbar">
-                  <div class="editor-tb-btn"><strong>B</strong></div>
-                  <div class="editor-tb-btn"><em>I</em></div>
-                  <div class="editor-tb-btn" style="text-decoration:underline;">U</div>
-                  <div class="editor-tb-btn" style="text-decoration:line-through;">S</div>
-                  <div class="editor-tb-btn">🔗</div>
-                  <div class="editor-tb-btn">A▾</div>
-                  <div class="editor-tb-btn">⋮</div>
-                </div>
-                <div style="background:#dbeafe;padding:8px 12px;border-radius:5px;font-size:13px;">
-                  ここが<strong style="background:#fef9c3;">選択した文字</strong>のサンプルです
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="step-item">
-          <div class="step-n">3</div>
-          <div class="step-content">
-            <div class="step-title">装飾ボタンをクリックする</div>
-            <table class="tbl">
-              <thead><tr><th>ボタン</th><th>効果</th><th>ショートカット</th></tr></thead>
-              <tbody>
-                <tr><td><strong>B</strong></td><td>太字（ボールド）</td><td><kbd>Ctrl</kbd>+<kbd>B</kbd></td></tr>
-                <tr><td><em>I</em></td><td>斜体（イタリック）</td><td><kbd>Ctrl</kbd>+<kbd>I</kbd></td></tr>
-                <tr><td style="text-decoration:underline;">U</td><td>下線（アンダーライン）</td><td><kbd>Ctrl</kbd>+<kbd>U</kbd></td></tr>
-                <tr><td style="text-decoration:line-through;">S</td><td>取り消し線（ストライク）</td><td>—</td></tr>
-                <tr><td>A▾</td><td>文字色・ハイライト変更</td><td>—</td></tr>
-              </tbody>
-            </table>
-            <div class="callout info" style="margin-top:10px;">
-              <span class="callout-ico">ℹ️</span>
-              <div class="callout-body">
-                <strong>もう一度クリックで解除</strong>
-                <span>太字・斜体などはもう一度同じボタンをクリックすると解除されます。</span>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-
-    <hr class="divider">
-
-    <div class="sub">
-      <div class="sub-title">📑 見出しの設定（H2・H3・H4）</div>
-      <ul class="steps">
-        <li class="step-item">
-          <div class="step-n">1</div>
-          <div class="step-content">
-            <div class="step-title">見出しブロックを追加する</div>
-            <p class="step-desc">＋ボタン をクリック → 「見出し」を選択します。または既存のテキストブロックで、ツールバー左端の <span class="chip outline" style="font-size:11px;">段落</span> → 「見出し」に変更する方法もあります。</p>
-          </div>
-        </li>
-        <li class="step-item">
-          <div class="step-n">2</div>
-          <div class="step-content">
-            <div class="step-title">見出しレベルを選ぶ</div>
-            <p class="step-desc">ツールバーに「H2」「H3」「H4」が表示されるのでクリックして選択します。</p>
-            <div class="mock" style="margin-top:8px;">
-              <div class="mock-body">
-                <div class="editor-toolbar" style="margin-bottom:12px;">
-                  <div class="editor-tb-btn">見出し ▾</div>
-                  <div class="editor-tb-btn" style="background:var(--blue-light);color:var(--blue);">H2</div>
-                  <div class="editor-tb-btn">H3</div>
-                  <div class="editor-tb-btn">H4</div>
-                  <div class="editor-tb-btn">H5</div>
-                  <div class="editor-tb-btn">H6</div>
-                </div>
-                <div style="font-size:19px;font-weight:700;border-bottom:2px solid #e5e7eb;padding-bottom:6px;">H2 見出しのサンプル</div>
-              </div>
-            </div>
-            <div class="callout info" style="margin-top:10px;">
-              <span class="callout-ico">📌</span>
-              <div class="callout-body">
-                <strong>見出しレベルの使い方</strong>
-                <span><strong>H2</strong> = 大見出し（章のタイトル）<br>
-                <strong>H3</strong> = 中見出し（節のタイトル）<br>
-                <strong>H4</strong> = 小見出し（より細かいタイトル）<br>
-                ※ H1はページタイトルが自動設定されるため、記事本文では使いません。</span>
-              </div>
-            </div>
-            <div class="callout warn" style="margin-top:8px;">
-              <span class="callout-ico">⚠️</span>
-              <div class="callout-body">
-                <strong>見出しの順序に注意</strong>
-                <span>H2の中にH3、H3の中にH4は OK ですが、H3の後にH2が来るなど順序が逆になるのはNGです。見出しは必ず大 → 小の順で使ってください。</span>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="step-item">
-          <div class="step-n">3</div>
-          <div class="step-content">
-            <div class="step-title">SWELLでは見出しデザインをカスタマイズできる</div>
-            <p class="step-desc">SWELLテーマでは、見出しのデザイン（スタイル・色・背景など）をカスタマイザーでサイト全体に統一設定できます。記事ごとに個別に変えることも右サイドバーから可能です。</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-
-  </div>
-</div>
-
-<!-- ==============================
-     SECTION 4: 投稿一覧 編集・削除
-     ============================== -->
-<div class="sec container" id="s4">
-  <div class="sec-head">
-    <div class="sec-num">4</div>
-    <div class="sec-title-wrap">
-      <div class="sec-label">投稿管理</div>
-      <div class="sec-title">投稿一覧からの編集・削除</div>
+      <div class="sec-label">記事の更新</div>
+      <div class="sec-title">既存記事を開いて編集する（投稿一覧から編集・削除）</div>
     </div>
   </div>
   <div class="sec-body">
@@ -1120,11 +815,353 @@ kbd{
 </div>
 
 <!-- ==============================
+     SECTION 3: 文字の装飾と見出し
+     ============================== -->
+<div class="sec container" id="s3">
+  <div class="sec-head">
+    <div class="sec-num">3</div>
+    <div class="sec-title-wrap">
+      <div class="sec-label">テキスト編集</div>
+      <div class="sec-title">テキスト編集・ツールバーの使い方</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <div class="sub">
+      <div class="sub-title">🔤 太字・斜体・下線（基本装飾）</div>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">装飾したい文字を選択する</div>
+            <p class="step-desc">マウスでドラッグして文字を選択すると、背景が青くハイライトされます。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">ツールバーが自動表示される</div>
+            <p class="step-desc">選択すると文字の上にツールバーがポップアップします。</p>
+            <div class="mock" style="margin-top:10px;">
+              <div class="mock-body">
+                <div style="font-size:12px;color:var(--gray-400);margin-bottom:6px;">▼ 選択時に表示されるツールバー</div>
+                <div class="editor-toolbar">
+                  <div class="editor-tb-btn"><strong>B</strong></div>
+                  <div class="editor-tb-btn"><em>I</em></div>
+                  <div class="editor-tb-btn" style="text-decoration:underline;">U</div>
+                  <div class="editor-tb-btn" style="text-decoration:line-through;">S</div>
+                  <div class="editor-tb-btn">🔗</div>
+                  <div class="editor-tb-btn">A▾</div>
+                  <div class="editor-tb-btn" style="background:#fef9c3;border-color:#d4a017;">🖍</div>
+                  <div class="editor-tb-btn">⋮</div>
+                </div>
+                <div style="background:#dbeafe;padding:8px 12px;border-radius:5px;font-size:13px;">
+                  ここが<strong style="background:#fef9c3;">選択した文字</strong>のサンプルです
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">3</div>
+          <div class="step-content">
+            <div class="step-title">装飾ボタンをクリックする</div>
+            <table class="tbl">
+              <thead><tr><th>ボタン</th><th>効果</th><th>ショートカット</th></tr></thead>
+              <tbody>
+                <tr><td><strong>B</strong></td><td>太字（ボールド）</td><td><kbd>Ctrl</kbd>+<kbd>B</kbd></td></tr>
+                <tr><td><em>I</em></td><td>斜体（イタリック）</td><td><kbd>Ctrl</kbd>+<kbd>I</kbd></td></tr>
+                <tr><td style="text-decoration:underline;">U</td><td>下線（アンダーライン）</td><td><kbd>Ctrl</kbd>+<kbd>U</kbd></td></tr>
+                <tr><td style="text-decoration:line-through;">S</td><td>取り消し線（ストライク）</td><td>—</td></tr>
+                <tr><td>A▾</td><td>文字色・背景色（ハイライト）変更</td><td>—</td></tr>
+                <tr><td>⋮</td><td>その他の装飾（インライン画像・ルビ など）</td><td>—</td></tr>
+              </tbody>
+            </table>
+            <div class="callout info" style="margin-top:10px;">
+              <span class="callout-ico">ℹ️</span>
+              <div class="callout-body">
+                <strong>もう一度クリックで解除</strong>
+                <span>太字・斜体などはもう一度同じボタンをクリックすると解除されます。</span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <!-- テキスト色セクション -->
+    <div class="sub">
+      <div class="sub-title">🎨 テキスト色の変更</div>
+      <p style="font-size:14px;color:var(--gray-600);margin-bottom:14px;">文字色を変えて大事なところを目立たせましょう。赤・青・緑などよく使う色が一覧で選べます。</p>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">色を変えたい文字を選択する</div>
+            <p class="step-desc">マウスでドラッグして対象の文字を選択します。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">ツールバーの「A▾」をクリック → 「テキスト色」から色を選ぶ</div>
+            <p class="step-desc">選択した文字の上に表示されるツールバーから <span class="chip outline" style="font-size:11px;">A▾</span> をクリック → パネルの「テキスト色」欄から色をクリックします。</p>
+            <div class="mock" style="margin-top:10px;">
+              <div class="mock-body">
+                <div style="font-size:12px;color:var(--gray-400);margin-bottom:8px;">▼ 「テキスト色」パネル</div>
+                <div style="border:1px solid var(--gray-200);border-radius:8px;padding:10px 14px;max-width:270px;">
+                  <div style="font-size:11px;font-weight:700;color:var(--gray-600);margin-bottom:7px;">🔤 テキスト色</div>
+                  <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                    <div title="赤" style="width:22px;height:22px;background:#e53e3e;border-radius:4px;cursor:pointer;"></div>
+                    <div title="オレンジ" style="width:22px;height:22px;background:#d97706;border-radius:4px;cursor:pointer;"></div>
+                    <div title="青" style="width:22px;height:22px;background:#2271b1;border-radius:4px;cursor:pointer;"></div>
+                    <div title="緑" style="width:22px;height:22px;background:#00a32a;border-radius:4px;cursor:pointer;"></div>
+                    <div title="紫" style="width:22px;height:22px;background:#7c3aed;border-radius:4px;cursor:pointer;"></div>
+                    <div title="黒" style="width:22px;height:22px;background:#1a1a2e;border-radius:4px;cursor:pointer;"></div>
+                  </div>
+                </div>
+                <div style="margin-top:12px;font-size:14px;line-height:2;">
+                  例：<span style="color:#e53e3e;font-weight:600;">赤い文字</span>
+                  <span style="color:#2271b1;font-weight:600;">青い文字</span>
+                  <span style="color:#00a32a;font-weight:600;">緑の文字</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">3</div>
+          <div class="step-content">
+            <div class="step-title">色を解除するには</div>
+            <p class="step-desc">文字を選択して再度「A▾」→「テキスト色」の上部にある <span class="chip outline" style="font-size:11px;">クリア</span> または「色なし」をクリックすると元に戻ります。</p>
+            <div class="callout warn" style="margin-top:8px;">
+              <span class="callout-ico">⚠️</span>
+              <div class="callout-body">
+                <strong>色は使いすぎ注意</strong>
+                <span>1記事の中で色を使いすぎると読みづらくなります。<strong>重要ポイント1〜2色</strong>に絞るのがおすすめです。</span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <!-- マーカーセクション -->
+    <div class="sub">
+      <div class="sub-title">🖍️ マーカー（蛍光ペン）の使い方</div>
+      <p style="font-size:14px;color:var(--gray-600);margin-bottom:14px;">文字に蛍光ペン風の背景色をつけて強調できます。SWELLではカラフルなマーカー色が利用可能です。</p>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">マーカーを引きたい文字を選択する</div>
+            <p class="step-desc">マウスでドラッグして対象の文字を選択します。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">ツールバーの「A▾」をクリック → 「背景色」を選ぶ</div>
+            <p class="step-desc">ツールバーの <span class="chip outline" style="font-size:11px;">A▾</span> をクリックすると文字色・背景色パネルが開きます。「背景色」の欄から使いたい色をクリックするとマーカーが引かれます。</p>
+            <div class="mock" style="margin-top:10px;">
+              <div class="mock-body">
+                <div style="font-size:12px;color:var(--gray-400);margin-bottom:8px;">▼「A▾」クリック後に開くパネル</div>
+                <div style="border:1px solid var(--gray-200);border-radius:8px;overflow:hidden;max-width:270px;">
+                  <div style="padding:10px 14px;border-bottom:1px solid var(--gray-100);">
+                    <div style="font-size:11px;font-weight:700;color:var(--gray-600);margin-bottom:7px;">🔤 文字色</div>
+                    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                      <div style="width:22px;height:22px;background:#e53e3e;border-radius:4px;cursor:pointer;"></div>
+                      <div style="width:22px;height:22px;background:#d97706;border-radius:4px;cursor:pointer;"></div>
+                      <div style="width:22px;height:22px;background:#2271b1;border-radius:4px;cursor:pointer;"></div>
+                      <div style="width:22px;height:22px;background:#00a32a;border-radius:4px;cursor:pointer;"></div>
+                      <div style="width:22px;height:22px;background:#7c3aed;border-radius:4px;cursor:pointer;"></div>
+                    </div>
+                  </div>
+                  <div style="padding:10px 14px;background:var(--gray-50);">
+                    <div style="font-size:11px;font-weight:700;color:var(--gray-600);margin-bottom:7px;">🖍 背景色（マーカー）← ここ！</div>
+                    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                      <div title="黄" style="width:22px;height:22px;background:#fef9c3;border:1px solid #d4a017;border-radius:4px;cursor:pointer;"></div>
+                      <div title="緑" style="width:22px;height:22px;background:#d1fae5;border:1px solid #6ee7b7;border-radius:4px;cursor:pointer;"></div>
+                      <div title="赤" style="width:22px;height:22px;background:#fee2e2;border:1px solid #fca5a5;border-radius:4px;cursor:pointer;"></div>
+                      <div title="青" style="width:22px;height:22px;background:#dbeafe;border:1px solid #93c5fd;border-radius:4px;cursor:pointer;"></div>
+                      <div title="紫" style="width:22px;height:22px;background:#ede9fe;border:1px solid #c4b5fd;border-radius:4px;cursor:pointer;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div style="margin-top:12px;font-size:13px;line-height:2;">
+                  例：<span style="background:#fef9c3;padding:0 3px;">黄マーカー</span>
+                  <span style="background:#d1fae5;padding:0 3px;">緑マーカー</span>
+                  <span style="background:#fee2e2;padding:0 3px;">赤マーカー</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">3</div>
+          <div class="step-content">
+            <div class="step-title">マーカーを解除するには</div>
+            <p class="step-desc">マーカーを引いた文字を選択して再度「A▾」→「背景色なし」をクリックすると解除されます。</p>
+            <div class="callout info" style="margin-top:8px;">
+              <span class="callout-ico">💡</span>
+              <div class="callout-body">
+                <strong>SWELLの「マーカー」装飾との違い</strong>
+                <span>ツールバー <span class="chip outline" style="font-size:11px;">⋮</span> の「その他」→「マーカー」を選ぶと、SWELL専用の波線・二重線マーカーが使えます。より個性的な強調表現が可能です。</span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <!-- テキストサイズセクション -->
+    <div class="sub">
+      <div class="sub-title">📏 テキストサイズの変更</div>
+      <p style="font-size:14px;color:var(--gray-600);margin-bottom:14px;">段落ブロックのテキストサイズを大きく・小さくできます。強調したい一文を大きく見せたり、補足の注釈を小さく表示したりできます。</p>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">サイズを変えたい段落ブロックをクリックして選択</div>
+            <p class="step-desc">段落全体のサイズを変えたい場合は、段落ブロック自体をクリックします（特定の文字だけのサイズ変更はできません）。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">右サイドバー「ブロック」タブの「タイポグラフィ」を開く</div>
+            <p class="step-desc">右サイドバー上部の <span class="chip outline" style="font-size:11px;">ブロック</span> タブをクリック → 「タイポグラフィ」欄にある「サイズ」プルダウンからサイズを選びます。</p>
+            <div class="mock" style="margin-top:10px;">
+              <div class="mock-body">
+                <div style="font-size:12px;color:var(--gray-400);margin-bottom:8px;">▼ 右サイドバー「ブロック」タブ → タイポグラフィ</div>
+                <div style="border:1px solid var(--gray-200);border-radius:8px;overflow:hidden;max-width:280px;">
+                  <div style="background:var(--gray-100);padding:8px 12px;display:flex;gap:14px;font-size:12px;border-bottom:1px solid var(--gray-200);">
+                    <span style="color:var(--gray-400);">投稿</span>
+                    <span style="color:var(--blue);font-weight:600;border-bottom:2px solid var(--blue);padding-bottom:6px;">ブロック</span>
+                  </div>
+                  <div style="padding:10px 14px;">
+                    <div style="font-size:11px;font-weight:700;color:var(--gray-600);margin-bottom:8px;">タイポグラフィ</div>
+                    <div style="display:flex;gap:6px;margin-bottom:6px;">
+                      <div class="chip outline" style="font-size:11px;">S</div>
+                      <div class="chip outline" style="font-size:11px;">M</div>
+                      <div class="chip blue" style="font-size:11px;">L</div>
+                      <div class="chip outline" style="font-size:11px;">XL</div>
+                      <div class="chip outline" style="font-size:11px;">XXL</div>
+                    </div>
+                    <div style="font-size:11px;color:var(--gray-400);">または「カスタム」で数値入力</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">3</div>
+          <div class="step-content">
+            <div class="step-title">プリセットサイズから選ぶ</div>
+            <table class="tbl">
+              <thead><tr><th>サイズ</th><th>目安</th><th>使いどころ</th></tr></thead>
+              <tbody>
+                <tr><td style="font-size:11px;"><strong>S</strong>（小）</td><td>約13px</td><td>注釈・補足テキスト</td></tr>
+                <tr><td style="font-size:14px;"><strong>M</strong>（中）</td><td>約16px（標準）</td><td>本文の標準サイズ</td></tr>
+                <tr><td style="font-size:17px;"><strong>L</strong>（大）</td><td>約20px</td><td>強調したい一文</td></tr>
+                <tr><td style="font-size:20px;"><strong>XL</strong>（特大）</td><td>約24px</td><td>リード文・キャッチコピー</td></tr>
+                <tr><td style="font-size:24px;"><strong>XXL</strong>（超特大）</td><td>約32px</td><td>見出し代わり（H2非推奨時）</td></tr>
+              </tbody>
+            </table>
+            <div class="callout info" style="margin-top:10px;">
+              <span class="callout-ico">💡</span>
+              <div class="callout-body">
+                <strong>元に戻すには</strong>
+                <span>サイズ欄の <span class="chip outline" style="font-size:11px;">リセット</span> をクリックすると標準サイズに戻ります。</span>
+              </div>
+            </div>
+            <div class="callout warn" style="margin-top:8px;">
+              <span class="callout-ico">⚠️</span>
+              <div class="callout-body">
+                <strong>サイズ変更より見出しを使うのがおすすめ</strong>
+                <span>大きな見出しを作りたいときは、サイズ変更より <strong>H2・H3などの見出しブロック</strong>（次の項目参照）を使う方がSEO・アクセシビリティの観点でも推奨されます。</span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <div class="sub">
+      <div class="sub-title">📑 見出しの設定（H2・H3・H4）</div>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">見出しブロックを追加する</div>
+            <p class="step-desc">＋ボタン をクリック → 「見出し」を選択します。または既存のテキストブロックで、ツールバー左端の <span class="chip outline" style="font-size:11px;">段落</span> → 「見出し」に変更する方法もあります。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">見出しレベルを選ぶ</div>
+            <p class="step-desc">ツールバーに「H2」「H3」「H4」が表示されるのでクリックして選択します。</p>
+            <div class="mock" style="margin-top:8px;">
+              <div class="mock-body">
+                <div class="editor-toolbar" style="margin-bottom:12px;">
+                  <div class="editor-tb-btn">見出し ▾</div>
+                  <div class="editor-tb-btn" style="background:var(--blue-light);color:var(--blue);">H2</div>
+                  <div class="editor-tb-btn">H3</div>
+                  <div class="editor-tb-btn">H4</div>
+                  <div class="editor-tb-btn">H5</div>
+                  <div class="editor-tb-btn">H6</div>
+                </div>
+                <div style="font-size:19px;font-weight:700;border-bottom:2px solid #e5e7eb;padding-bottom:6px;">H2 見出しのサンプル</div>
+              </div>
+            </div>
+            <div class="callout info" style="margin-top:10px;">
+              <span class="callout-ico">📌</span>
+              <div class="callout-body">
+                <strong>見出しレベルの使い方</strong>
+                <span><strong>H2</strong> = 大見出し（章のタイトル）<br>
+                <strong>H3</strong> = 中見出し（節のタイトル）<br>
+                <strong>H4</strong> = 小見出し（より細かいタイトル）<br>
+                ※ H1はページタイトルが自動設定されるため、記事本文では使いません。</span>
+              </div>
+            </div>
+            <div class="callout warn" style="margin-top:8px;">
+              <span class="callout-ico">⚠️</span>
+              <div class="callout-body">
+                <strong>見出しの順序に注意</strong>
+                <span>H2の中にH3、H3の中にH4は OK ですが、H3の後にH2が来るなど順序が逆になるのはNGです。見出しは必ず大 → 小の順で使ってください。</span>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">3</div>
+          <div class="step-content">
+            <div class="step-title">SWELLでは見出しデザインをカスタマイズできる</div>
+            <p class="step-desc">SWELLテーマでは、見出しのデザイン（スタイル・色・背景など）をカスタマイザーでサイト全体に統一設定できます。記事ごとに個別に変えることも右サイドバーから可能です。</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==============================
      SECTION 5: 下書きに変更
      ============================== -->
-<div class="sec container" id="s5">
+<div class="sec container" id="s4">
   <div class="sec-head">
-    <div class="sec-num">5</div>
+    <div class="sec-num">4</div>
     <div class="sec-title-wrap">
       <div class="sec-label">公開設定</div>
       <div class="sec-title">公開中の記事を下書きに変更</div>
@@ -1197,202 +1234,11 @@ kbd{
 </div>
 
 <!-- ==============================
-     SECTION 6: リンクの挿入
-     ============================== -->
-<div class="sec container" id="s6">
-  <div class="sec-head">
-    <div class="sec-num">6</div>
-    <div class="sec-title-wrap">
-      <div class="sec-label">テキスト編集</div>
-      <div class="sec-title">リンクの挿入</div>
-    </div>
-  </div>
-  <div class="sec-body">
-
-    <div class="sub">
-      <div class="sub-title">🔗 テキストにリンクを設定する</div>
-      <ul class="steps">
-        <li class="step-item">
-          <div class="step-n">1</div>
-          <div class="step-content">
-            <div class="step-title">リンクにしたい文字を選択する</div>
-            <p class="step-desc">マウスでドラッグして文字を選択します（例：「こちらをクリック」「詳細はこちら」など）。</p>
-          </div>
-        </li>
-        <li class="step-item">
-          <div class="step-n">2</div>
-          <div class="step-content">
-            <div class="step-title">🔗 リンクアイコンをクリック</div>
-            <p class="step-desc">ツールバーの <span class="chip outline" style="font-size:11px;">🔗</span> アイコンをクリック（またはショートカット <kbd>Ctrl</kbd>+<kbd>K</kbd>）。</p>
-          </div>
-        </li>
-        <li class="step-item">
-          <div class="step-n">3</div>
-          <div class="step-content">
-            <div class="step-title">URLを入力して Enter</div>
-            <p class="step-desc">入力欄に貼り付けたいURLを入力し、<kbd>Enter</kbd> を押します。サイト内のページにリンクする場合は、ページのタイトルを入力すると候補が表示されます。</p>
-            <div class="mock" style="margin-top:8px;">
-              <div class="mock-body">
-                <div style="background:#fff;border:1px solid var(--blue);border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:8px;font-size:13px;">
-                  <span>🔗</span>
-                  <span style="flex:1;color:var(--gray-400);">https://example.com または検索キーワード</span>
-                  <span class="chip blue" style="font-size:11px;">→ Enter</span>
-                </div>
-                <div style="font-size:11px;color:var(--gray-400);margin-top:6px;">例：「お知らせ一覧」と入力すると内部ページが候補表示されます</div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="step-item">
-          <div class="step-n">4</div>
-          <div class="step-content">
-            <div class="step-title">外部サイトは「新しいタブで開く」をオンに</div>
-            <p class="step-desc">リンクパネルの「新しいタブで開く」トグルをオンにすると、クリック時に別タブで開きます。外部サイトへのリンクでは設定推奨です。</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-
-    <hr class="divider">
-
-    <div class="sub">
-      <div class="sub-title">✂️ リンクを削除する</div>
-      <ul class="steps">
-        <li class="step-item">
-          <div class="step-n">1</div>
-          <div class="step-content">
-            <div class="step-title">リンクテキストをクリックする</div>
-            <p class="step-desc">リンクが設定された文字をクリックすると、リンク先URLのプレビューが表示されます。</p>
-          </div>
-        </li>
-        <li class="step-item">
-          <div class="step-n">2</div>
-          <div class="step-content">
-            <div class="step-title">リンク解除アイコン（鎖が切れたマーク）をクリック</div>
-            <p class="step-desc">プレビューパネルにある <span class="chip outline" style="font-size:11px;">🔗̶ リンク解除</span> をクリックするとリンクが削除されます。</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-
-    <hr class="divider">
-
-    <div class="sub">
-      <div class="sub-title">🔘 SWELLボタンブロックを使う <span class="swell-badge">SWELL</span></div>
-      <p style="font-size:14px;color:var(--gray-600);margin-bottom:12px;">テキストリンクではなく、目立つ「ボタン」としてリンクを設置したい場合はSWELL独自の <strong>SWELLボタンブロック</strong> が便利です。</p>
-      <ul class="steps">
-        <li class="step-item">
-          <div class="step-n">1</div>
-          <div class="step-content">
-            <div class="step-title">＋ ボタンから「SWELLボタン」を選択</div>
-            <p class="step-desc">ブロック追加（＋）→ 「SWELL」カテゴリ → 「SWELLボタン」を選択します。</p>
-          </div>
-        </li>
-        <li class="step-item">
-          <div class="step-n">2</div>
-          <div class="step-content">
-            <div class="step-title">ボタンのテキストとリンクURLを設定</div>
-            <p class="step-desc">右サイドバーでボタンの色・形・テキストを設定し、URLを入力します。</p>
-            <div style="text-align:center;margin-top:8px;">
-              <div style="display:inline-block;background:var(--blue);color:#fff;border-radius:6px;padding:10px 28px;font-size:14px;font-weight:600;">詳細はこちら →</div>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-
-  </div>
-</div>
-
-<!-- ==============================
-     SECTION 7: ブロックの移動・コピー
-     ============================== -->
-<div class="sec container" id="s7">
-  <div class="sec-head">
-    <div class="sec-num">7</div>
-    <div class="sec-title-wrap">
-      <div class="sec-label">ブロック操作</div>
-      <div class="sec-title">ブロックの移動とコピー</div>
-    </div>
-  </div>
-  <div class="sec-body">
-
-    <div class="callout info">
-      <span class="callout-ico">ℹ️</span>
-      <div class="callout-body">
-        <strong>「ブロック」とは？</strong>
-        <span>Gutenbergでは、段落・見出し・画像・リストなど、コンテンツの1つのかたまりを「ブロック」と呼びます。ブロック単位で並び替えや複製が可能です。</span>
-      </div>
-    </div>
-
-    <div class="sub" style="margin-top:16px;">
-      <div class="sub-title">↕️ ブロックを移動する</div>
-      <div class="mock" style="margin-bottom:14px;">
-        <div class="mock-body">
-          <div style="font-size:12px;color:var(--gray-400);margin-bottom:8px;">▼ ブロック選択時に左側に表示されるアイコン</div>
-          <div style="display:flex;gap:10px;align-items:center;">
-            <div style="display:flex;flex-direction:column;gap:4px;">
-              <div style="background:var(--gray-100);border:1px solid var(--gray-200);border-radius:4px;padding:4px 6px;font-size:11px;text-align:center;cursor:pointer;">▲<br><span style="font-size:9px;">上へ</span></div>
-              <div style="background:var(--gray-100);border:1px solid var(--gray-200);border-radius:4px;padding:4px 6px;font-size:11px;text-align:center;cursor:pointer;">▼<br><span style="font-size:9px;">下へ</span></div>
-            </div>
-            <div style="background:var(--gray-100);border:1px solid var(--gray-200);border-radius:4px;padding:10px 6px;font-size:11px;cursor:grab;color:var(--gray-600);">⋮⋮<br><span style="font-size:9px;">ドラッグ</span></div>
-            <div style="flex:1;background:var(--blue-light);border:1px solid #c5ddf5;border-radius:6px;padding:10px 14px;font-size:13px;">← 選択中のブロック</div>
-          </div>
-        </div>
-      </div>
-      <table class="tbl">
-        <thead><tr><th>方法</th><th>操作</th></tr></thead>
-        <tbody>
-          <tr><td><strong>▲ / ▼ ボタンで1つずつ移動</strong></td><td>ブロック左側の ▲（上）▼（下）をクリックする</td></tr>
-          <tr><td><strong>ドラッグで自由移動</strong></td><td>ブロック左端の <strong>⋮⋮</strong>（ドラッグハンドル）をつかんで上下にドラッグする</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <hr class="divider">
-
-    <div class="sub">
-      <div class="sub-title">📋 ブロックをコピー（複製）する</div>
-      <ul class="steps">
-        <li class="step-item">
-          <div class="step-n">1</div>
-          <div class="step-content">
-            <div class="step-title">コピーしたいブロックをクリックして選択</div>
-          </div>
-        </li>
-        <li class="step-item">
-          <div class="step-n">2</div>
-          <div class="step-content">
-            <div class="step-title">ツールバー右端の「⋮」をクリック</div>
-            <p class="step-desc">ツールバー右端の <span class="chip outline" style="font-size:11px;">⋮</span> をクリックするとメニューが開きます。</p>
-          </div>
-        </li>
-        <li class="step-item">
-          <div class="step-n">3</div>
-          <div class="step-content">
-            <div class="step-title">「複製」を選択</div>
-            <p class="step-desc">「複製」をクリックすると、そのブロックのすぐ下にコピーが作成されます。</p>
-          </div>
-        </li>
-      </ul>
-      <div class="callout ok">
-        <span class="callout-ico">⌨️</span>
-        <div class="callout-body">
-          <strong>複数ブロックのコピー＆ペースト</strong>
-          <span>複数ブロックを選択した状態で <kbd>Ctrl</kbd>+<kbd>C</kbd> でコピー → 貼り付けたい位置でカーソルを合わせ <kbd>Shift</kbd>+<kbd>Ctrl</kbd>+<kbd>V</kbd> でブロックとして貼り付けができます。</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ==============================
      SECTION 8: 画像アップロード
      ============================== -->
-<div class="sec container" id="s8">
+<div class="sec container" id="s5">
   <div class="sec-head">
-    <div class="sec-num">8</div>
+    <div class="sec-num">5</div>
     <div class="sec-title-wrap">
       <div class="sec-label">メディア管理</div>
       <div class="sec-title">画像のアップロード・差し替え</div>
@@ -1509,11 +1355,141 @@ kbd{
 </div>
 
 <!-- ==============================
+     SECTION 動画挿入
+     ============================== -->
+<div class="sec container" id="s6">
+  <div class="sec-head">
+    <div class="sec-num">6</div>
+    <div class="sec-title-wrap">
+      <div class="sec-label">メディア管理</div>
+      <div class="sec-title">動画の挿入</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <div class="callout info">
+      <span class="callout-ico">ℹ️</span>
+      <div class="callout-body">
+        <strong>動画挿入の2つの方法</strong>
+        <span>記事内に動画を埋め込む方法は主に2つあります。<br>
+        ① <strong>YouTube埋め込み</strong>（推奨）― YouTubeのURLを貼るだけで動画が表示されます。サーバー容量を使わず表示が軽いため一般的です。<br>
+        ② <strong>動画ファイルの直接アップロード</strong> ― MP4ファイルをWordPressにアップして埋め込みます。ファイルサイズに注意が必要です。</span>
+      </div>
+    </div>
+
+    <div class="sub" style="margin-top:20px;">
+      <div class="sub-title">▶️ YouTube動画を埋め込む（推奨）</div>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">YouTubeで埋め込みたい動画を開き、URLをコピーする</div>
+            <p class="step-desc">ブラウザのアドレスバーに表示されているURLをコピーします（例：<code style="font-size:11px;background:var(--gray-100);padding:1px 6px;border-radius:3px;">https://www.youtube.com/watch?v=XXXXXXXXX</code>）。共有ボタンからコピーしてもOKです。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">記事エディターで「＋」→「YouTube」ブロックを追加する</div>
+            <p class="step-desc">動画を入れたい位置で <strong>＋</strong> をクリック → 検索欄に「YouTube」と入力 → 「YouTube」ブロックを選択します。</p>
+            <div class="mock" style="margin-top:10px;">
+              <div class="mock-body">
+                <div style="font-size:12px;color:var(--gray-400);margin-bottom:8px;">▼ ブロック追加パネル（「YouTube」を検索）</div>
+                <div style="border:1px solid var(--gray-200);border-radius:8px;overflow:hidden;max-width:280px;">
+                  <div style="padding:8px 12px;background:var(--gray-100);border-bottom:1px solid var(--gray-200);">
+                    <div style="background:#fff;border:1px solid var(--gray-200);border-radius:5px;padding:6px 10px;font-size:12px;color:var(--gray-400);">🔍 YouTube</div>
+                  </div>
+                  <div style="padding:8px 0;">
+                    <div style="display:flex;align-items:center;gap:10px;padding:8px 14px;background:var(--blue-light);border-left:3px solid var(--blue);">
+                      <div style="width:28px;height:28px;background:#ff0000;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">▶</div>
+                      <div>
+                        <div style="font-size:12px;font-weight:600;">YouTube</div>
+                        <div style="font-size:10px;color:var(--gray-400);">YouTube動画を埋め込む</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">3</div>
+          <div class="step-content">
+            <div class="step-title">URLを貼り付けて「埋め込む」をクリック</div>
+            <p class="step-desc">ブロック内の入力欄にコピーしたYouTube URLを貼り付け、<span class="chip blue" style="font-size:11px;">埋め込む</span> ボタンをクリックします。</p>
+            <div class="mock" style="margin-top:10px;">
+              <div class="mock-body">
+                <div style="border:2px dashed var(--gray-200);border-radius:8px;padding:16px;text-align:center;">
+                  <div style="font-size:11px;color:var(--gray-400);margin-bottom:8px;">YouTube URLを入力してください</div>
+                  <div style="display:flex;gap:8px;max-width:340px;margin:0 auto;">
+                    <div style="flex:1;background:var(--gray-100);border:1px solid var(--gray-200);border-radius:5px;padding:7px 10px;font-size:12px;color:#2271b1;">https://www.youtube.com/watch?v=…</div>
+                    <div class="chip blue" style="font-size:11px;white-space:nowrap;">埋め込む</div>
+                  </div>
+                </div>
+                <div style="margin-top:12px;background:#000;border-radius:6px;height:80px;display:flex;align-items:center;justify-content:center;">
+                  <div style="width:36px;height:36px;background:#ff0000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;">▶</div>
+                </div>
+                <div style="font-size:11px;color:var(--gray-400);text-align:center;margin-top:6px;">← 動画がプレビュー表示されます</div>
+              </div>
+            </div>
+            <div class="callout ok" style="margin-top:10px;">
+              <span class="callout-ico">✅</span>
+              <div class="callout-body">
+                <strong>URLを段落に貼るだけでも埋め込める</strong>
+                <span>段落ブロックにYouTube URLをそのまま貼り付けて <kbd>Enter</kbd> を押すと、自動的に動画ブロックに変換されます（WordPress標準機能）。</span>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">4</div>
+          <div class="step-content">
+            <div class="step-title">右サイドバーで表示サイズを調整する（任意）</div>
+            <p class="step-desc">ブロックを選択した状態で右サイドバー「ブロック」タブから「アスペクト比」や「幅」を変更できます。デフォルトの16:9のままで問題ありません。</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <div class="sub">
+      <div class="sub-title">📁 動画ファイルを直接アップロードする</div>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">「＋」→「動画」ブロックを追加する</div>
+            <p class="step-desc">動画を入れたい位置で <strong>＋</strong> → 検索欄に「動画」と入力 → 「動画」ブロックを選択します。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">動画ファイルをアップロードまたはライブラリから選択</div>
+            <p class="step-desc"><span class="chip blue" style="font-size:11px;">アップロード</span> でPCのMP4ファイルを選択するか、<span class="chip outline" style="font-size:11px;">メディアライブラリ</span> から既存のファイルを選びます。</p>
+          </div>
+        </li>
+      </ul>
+      <div class="callout warn">
+        <span class="callout-ico">⚠️</span>
+        <div class="callout-body">
+          <strong>ファイルサイズに注意</strong>
+          <span>動画ファイルは容量が大きいため、サーバーへの直接アップロードはページ表示速度に影響します。できる限り <strong>YouTube埋め込みを推奨</strong>します。アップロードする場合は <strong>50MB以下</strong> を目安にしてください。</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==============================
      SECTION 9: アイキャッチ
      ============================== -->
-<div class="sec container" id="s9">
+<div class="sec container" id="s7">
   <div class="sec-head">
-    <div class="sec-num">9</div>
+    <div class="sec-num">7</div>
     <div class="sec-title-wrap">
       <div class="sec-label">投稿設定</div>
       <div class="sec-title">アイキャッチ画像の設定</div>
@@ -1622,11 +1598,406 @@ kbd{
 </div>
 
 <!-- ==============================
-     SECTION 10: SWELL独自ブロック
+     SECTION 2: 新規投稿
+     ============================== -->
+<div class="sec container" id="s8">
+  <div class="sec-head">
+    <div class="sec-num">8</div>
+    <div class="sec-title-wrap">
+      <div class="sec-label">基本操作</div>
+      <div class="sec-title">新規記事の投稿</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <ul class="steps">
+      <li class="step-item">
+        <div class="step-n">1</div>
+        <div class="step-content">
+          <div class="step-title">「投稿 ▶ 新規追加」をクリック</div>
+          <p class="step-desc">左メニューの <span class="path">投稿 <span class="path-sep">▶</span> 新規追加</span> をクリックします。</p>
+          <div class="mock" style="margin-top:10px;">
+            <div class="mock-body" style="padding:0;">
+              <div class="admin-layout">
+                <div class="admin-sidebar">
+                  <div class="admin-sidebar-item">🏠 ダッシュボード</div>
+                  <div class="admin-sidebar-item active">📝 投稿</div>
+                  <div style="padding:4px 14px 4px 28px;font-size:10px;color:#9ca3af;">一覧</div>
+                  <div style="padding:4px 14px 4px 28px;font-size:10px;color:#72aee6;background:#2271b1;">→ 新規追加 ←</div>
+                  <div style="padding:4px 14px 4px 28px;font-size:10px;color:#9ca3af;">カテゴリー</div>
+                  <div class="admin-sidebar-item">📄 固定ページ</div>
+                  <div class="admin-sidebar-item">🖼 メディア</div>
+                </div>
+                <div class="admin-main">
+                  <div style="font-size:12px;color:var(--gray-600);">← 「投稿」の中の「新規追加」をクリックします</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">2</div>
+        <div class="step-content">
+          <div class="step-title">タイトルを入力する</div>
+          <p class="step-desc">「タイトルを追加」と薄く書いてある部分をクリックし、記事のタイトルを入力します。</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">3</div>
+        <div class="step-content">
+          <div class="step-title">本文を入力する</div>
+          <p class="step-desc">タイトルの下にある本文エリアをクリックすると <strong>「＋」マーク</strong>が表示されます。そのまま文字を入力するか、＋をクリックしてブロックを選んで作成します。</p>
+          <div class="editor-mock" style="margin-top:10px;">
+            <div class="editor-topbar">
+              <div class="editor-topbar-left">
+                <div class="editor-wplogo">W</div>
+                <div style="font-size:11px;color:#c3c4c7;">← 戻る</div>
+                <div style="font-size:11px;color:#c3c4c7;">＋ブロック追加</div>
+              </div>
+              <div class="editor-topbar-right">
+                <div class="chip outline" style="font-size:11px;">下書き保存</div>
+                <div class="chip outline" style="font-size:11px;">プレビュー</div>
+                <div class="chip green" style="font-size:11px;">公開</div>
+                <div style="width:28px;height:28px;background:rgba(255,255,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#c3c4c7;">⚙</div>
+              </div>
+            </div>
+            <div style="display:flex;">
+              <div class="editor-content" style="flex:1;">
+                <div class="editor-title-input" style="color:var(--gray-400);">タイトルを追加</div>
+                <div class="editor-block">本文を入力、またはスラッシュを入力してブロックを選択…</div>
+                <div style="text-align:center;font-size:20px;color:var(--gray-400);margin:8px 0;">＋</div>
+              </div>
+              <div class="editor-sidebar">
+                <div class="sidebar-tab">
+                  <div class="sidebar-tab-item active">投稿</div>
+                  <div class="sidebar-tab-item">ブロック</div>
+                </div>
+                <div class="sidebar-section">
+                  <div class="sidebar-section-title">ステータスと公開状態</div>
+                  <div class="sidebar-row"><span>公開状態</span><span class="chip outline" style="font-size:10px;">公開</span></div>
+                  <div class="sidebar-row"><span>日時</span><span style="font-size:11px;color:var(--gray-400);">今すぐ</span></div>
+                </div>
+                <div class="sidebar-section">
+                  <div class="sidebar-section-title">カテゴリー</div>
+                  <div style="font-size:12px;color:var(--gray-600);">☑ お知らせ<br>□ ブログ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="callout info" style="margin-top:10px;">
+            <span class="callout-ico">💡</span>
+            <div class="callout-body">
+              <strong>右サイドバーは「投稿」タブを選択</strong>
+              <span>右上の <span class="chip outline" style="font-size:11px;">⚙</span> アイコンでサイドバーの表示/非表示を切り替えられます。カテゴリやアイキャッチを設定するには <strong>「投稿」タブ</strong> が選ばれていることを確認してください。</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">4</div>
+        <div class="step-content">
+          <div class="step-title">改行・改段落の方法</div>
+          <div class="callout ok" style="margin-bottom:12px;">
+            <span class="callout-ico">✅</span>
+            <div class="callout-body">
+              <strong>改行は <kbd>Shift</kbd> + <kbd>Enter</kbd> を推奨！</strong>
+              <span>通常の改行（行を変えたいだけ）は <kbd>Shift</kbd>+<kbd>Enter</kbd> を使ってください。<kbd>Enter</kbd> だけだと新しいブロックが作られ、段落間に余白が生まれてしまいます。</span>
+            </div>
+          </div>
+          <table class="tbl">
+            <thead><tr><th>キー</th><th>操作</th><th>効果</th></tr></thead>
+            <tbody>
+              <tr><td><kbd>Shift</kbd> + <kbd>Enter</kbd> <span class="chip green" style="font-size:10px;">推奨</span></td><td>改行（同じブロック内）</td><td>ブロック内で行を変える。余白なし</td></tr>
+              <tr><td><kbd>Enter</kbd></td><td>改段落（新しいブロック作成）</td><td>段落間に余白が入る。章の区切りに</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">5</div>
+        <div class="step-content">
+          <div class="step-title">カテゴリーを選択する</div>
+          <p class="step-desc">右サイドバー（「投稿」タブ）の「カテゴリー」欄にチェックを入れます。新しいカテゴリーを追加したい場合は「新規カテゴリーを追加」をクリックして名前を入力します。</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">6</div>
+        <div class="step-content">
+          <div class="step-title">タグを設定する</div>
+          <p class="step-desc">カテゴリーの下にある「タグ」欄に記事のキーワードを入力し、<kbd>Enter</kbd> または <kbd>，</kbd> で確定します。複数設定できます。</p>
+
+          <!-- タグとカテゴリーの違い -->
+          <div class="callout info" style="margin-top:10px;">
+            <span class="callout-ico">🏷️</span>
+            <div class="callout-body">
+              <strong>タグとカテゴリーの違い</strong>
+              <span>カテゴリーは記事をジャンルでまとめる「フォルダ」、タグは記事の内容を示す「値札（キーワード）」です。カテゴリーは階層構造を持ちますが、タグは階層なし・複数設定が基本です。</span>
+            </div>
+          </div>
+
+          <!-- タグ入力のモック -->
+          <div class="mock" style="margin-top:12px;">
+            <div class="mock-body">
+              <div style="font-size:12px;color:var(--gray-400);margin-bottom:8px;">▼ サイドバー「投稿」タブのタグ欄</div>
+              <div style="border:1px solid var(--gray-200);border-radius:8px;overflow:hidden;">
+                <div style="background:var(--gray-100);padding:6px 10px;font-size:11px;font-weight:700;color:var(--gray-600);letter-spacing:0.5px;border-bottom:1px solid var(--gray-200);">タグ</div>
+                <div style="padding:10px 12px;">
+                  <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;">
+                    <span style="background:var(--blue-light);border:1px solid #c5ddf5;color:var(--blue);border-radius:20px;padding:3px 10px;font-size:12px;display:flex;align-items:center;gap:5px;">夏祭り <span style="color:var(--gray-400);cursor:pointer;">×</span></span>
+                    <span style="background:var(--blue-light);border:1px solid #c5ddf5;color:var(--blue);border-radius:20px;padding:3px 10px;font-size:12px;display:flex;align-items:center;gap:5px;">2025年 <span style="color:var(--gray-400);cursor:pointer;">×</span></span>
+                    <span style="background:var(--blue-light);border:1px solid #c5ddf5;color:var(--blue);border-radius:20px;padding:3px 10px;font-size:12px;display:flex;align-items:center;gap:5px;">限定 <span style="color:var(--gray-400);cursor:pointer;">×</span></span>
+                  </div>
+                  <div style="border:1px solid var(--gray-200);border-radius:5px;padding:6px 10px;font-size:12px;color:var(--gray-400);">タグを追加… Enter または , で確定</div>
+                  <div style="font-size:11px;color:var(--blue);margin-top:6px;cursor:pointer;">よく使うタグから選択</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- タグ運用ポイント -->
+          <table class="tbl" style="margin-top:12px;">
+            <thead><tr><th>ポイント</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><td>🔢 <strong>数は2〜5個が目安</strong></td><td>付けすぎると読者が混乱します。最重要キーワードに絞りましょう</td></tr>
+              <tr><td>✏️ <strong>表記を統一する</strong></td><td>「WordPress」と「ワードプレス」など同じ意味のタグは作らない</td></tr>
+              <tr><td>🔁 <strong>カテゴリーと重複させない</strong></td><td>カテゴリーと同じ名前のタグは冗長です。異なる軸で設定しましょう</td></tr>
+            </tbody>
+          </table>
+
+          <div class="callout warn" style="margin-top:10px;">
+            <span class="callout-ico">⚠️</span>
+            <div class="callout-body">
+              <strong>スラッグは後から管理画面で半角英数字に修正を推奨</strong>
+              <span>記事編集画面からタグを追加すると、スラッグ（URLの一部）が日本語のままになることがあります。管理画面の <span class="path">投稿 <span class="path-sep">▶</span> タグ</span> から編集できます（例: 夏祭り → <code style="font-size:11px;background:var(--gray-100);padding:1px 5px;border-radius:3px;">summer-festival</code>）。</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">7</div>
+        <div class="step-content">
+          <div class="step-title">プレビューで確認する</div>
+          <p class="step-desc">右上の <span class="chip outline" style="font-size:11px;">プレビュー</span> をクリックすると、実際のサイトでどう見えるか確認できます。</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">8</div>
+        <div class="step-content">
+          <div class="step-title">「公開」ボタンをクリックして投稿完了</div>
+          <p class="step-desc">右上の <span class="chip green">公開</span> をクリック → 確認ダイアログで再度 <span class="chip green">公開</span> をクリックするとサイトに公開されます。</p>
+          <div class="callout ok">
+            <span class="callout-ico">✅</span>
+            <div class="callout-body">
+              <strong>すぐに公開しない場合</strong>
+              <span><span class="chip outline" style="font-size:11px;">下書き保存</span> をクリックすれば、内容を保存したまま公開せずに一時保存できます。</span>
+            </div>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+
+  </div>
+</div>
+
+<!-- ==============================
+     SECTION 6: リンクの挿入
+     ============================== -->
+<div class="sec container" id="s9">
+  <div class="sec-head">
+    <div class="sec-num">9</div>
+    <div class="sec-title-wrap">
+      <div class="sec-label">テキスト編集</div>
+      <div class="sec-title">リンクの挿入</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <div class="sub">
+      <div class="sub-title">🔗 テキストにリンクを設定する</div>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">リンクにしたい文字を選択する</div>
+            <p class="step-desc">マウスでドラッグして文字を選択します（例：「こちらをクリック」「詳細はこちら」など）。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">🔗 リンクアイコンをクリック</div>
+            <p class="step-desc">ツールバーの <span class="chip outline" style="font-size:11px;">🔗</span> アイコンをクリック（またはショートカット <kbd>Ctrl</kbd>+<kbd>K</kbd>）。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">3</div>
+          <div class="step-content">
+            <div class="step-title">URLを入力して Enter</div>
+            <p class="step-desc">入力欄に貼り付けたいURLを入力し、<kbd>Enter</kbd> を押します。サイト内のページにリンクする場合は、ページのタイトルを入力すると候補が表示されます。</p>
+            <div class="mock" style="margin-top:8px;">
+              <div class="mock-body">
+                <div style="background:#fff;border:1px solid var(--blue);border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:8px;font-size:13px;">
+                  <span>🔗</span>
+                  <span style="flex:1;color:var(--gray-400);">https://example.com または検索キーワード</span>
+                  <span class="chip blue" style="font-size:11px;">→ Enter</span>
+                </div>
+                <div style="font-size:11px;color:var(--gray-400);margin-top:6px;">例：「お知らせ一覧」と入力すると内部ページが候補表示されます</div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">4</div>
+          <div class="step-content">
+            <div class="step-title">外部サイトは「新しいタブで開く」をオンに</div>
+            <p class="step-desc">リンクパネルの「新しいタブで開く」トグルをオンにすると、クリック時に別タブで開きます。外部サイトへのリンクでは設定推奨です。</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <div class="sub">
+      <div class="sub-title">✂️ リンクを削除する</div>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">リンクテキストをクリックする</div>
+            <p class="step-desc">リンクが設定された文字をクリックすると、リンク先URLのプレビューが表示されます。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">リンク解除アイコン（鎖が切れたマーク）をクリック</div>
+            <p class="step-desc">プレビューパネルにある <span class="chip outline" style="font-size:11px;">🔗̶ リンク解除</span> をクリックするとリンクが削除されます。</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <div class="sub">
+      <div class="sub-title">🔘 SWELLボタンブロックを使う <span class="swell-badge">SWELL</span></div>
+      <p style="font-size:14px;color:var(--gray-600);margin-bottom:12px;">テキストリンクではなく、目立つ「ボタン」としてリンクを設置したい場合はSWELL独自の <strong>SWELLボタンブロック</strong> が便利です。</p>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">＋ ボタンから「SWELLボタン」を選択</div>
+            <p class="step-desc">ブロック追加（＋）→ 「SWELL」カテゴリ → 「SWELLボタン」を選択します。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">ボタンのテキストとリンクURLを設定</div>
+            <p class="step-desc">右サイドバーでボタンの色・形・テキストを設定し、URLを入力します。</p>
+            <div style="text-align:center;margin-top:8px;">
+              <div style="display:inline-block;background:var(--blue);color:#fff;border-radius:6px;padding:10px 28px;font-size:14px;font-weight:600;">詳細はこちら →</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==============================
+     SECTION 7: ブロックの移動・コピー
      ============================== -->
 <div class="sec container" id="s10">
+  <div class="sec-head">
+    <div class="sec-num">10</div>
+    <div class="sec-title-wrap">
+      <div class="sec-label">ブロック操作</div>
+      <div class="sec-title">ブロックの移動とコピー</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <div class="callout info">
+      <span class="callout-ico">ℹ️</span>
+      <div class="callout-body">
+        <strong>「ブロック」とは？</strong>
+        <span>Gutenbergでは、段落・見出し・画像・リストなど、コンテンツの1つのかたまりを「ブロック」と呼びます。ブロック単位で並び替えや複製が可能です。</span>
+      </div>
+    </div>
+
+    <div class="sub" style="margin-top:16px;">
+      <div class="sub-title">↕️ ブロックを移動する</div>
+      <div class="mock" style="margin-bottom:14px;">
+        <div class="mock-body">
+          <div style="font-size:12px;color:var(--gray-400);margin-bottom:8px;">▼ ブロック選択時に左側に表示されるアイコン</div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="background:var(--gray-100);border:1px solid var(--gray-200);border-radius:4px;padding:4px 6px;font-size:11px;text-align:center;cursor:pointer;">▲<br><span style="font-size:9px;">上へ</span></div>
+              <div style="background:var(--gray-100);border:1px solid var(--gray-200);border-radius:4px;padding:4px 6px;font-size:11px;text-align:center;cursor:pointer;">▼<br><span style="font-size:9px;">下へ</span></div>
+            </div>
+            <div style="background:var(--gray-100);border:1px solid var(--gray-200);border-radius:4px;padding:10px 6px;font-size:11px;cursor:grab;color:var(--gray-600);">⋮⋮<br><span style="font-size:9px;">ドラッグ</span></div>
+            <div style="flex:1;background:var(--blue-light);border:1px solid #c5ddf5;border-radius:6px;padding:10px 14px;font-size:13px;">← 選択中のブロック</div>
+          </div>
+        </div>
+      </div>
+      <table class="tbl">
+        <thead><tr><th>方法</th><th>操作</th></tr></thead>
+        <tbody>
+          <tr><td><strong>▲ / ▼ ボタンで1つずつ移動</strong></td><td>ブロック左側の ▲（上）▼（下）をクリックする</td></tr>
+          <tr><td><strong>ドラッグで自由移動</strong></td><td>ブロック左端の <strong>⋮⋮</strong>（ドラッグハンドル）をつかんで上下にドラッグする</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="divider">
+
+    <div class="sub">
+      <div class="sub-title">📋 ブロックをコピー（複製）する</div>
+      <ul class="steps">
+        <li class="step-item">
+          <div class="step-n">1</div>
+          <div class="step-content">
+            <div class="step-title">コピーしたいブロックをクリックして選択</div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">2</div>
+          <div class="step-content">
+            <div class="step-title">ツールバー右端の「⋮」をクリック</div>
+            <p class="step-desc">ツールバー右端の <span class="chip outline" style="font-size:11px;">⋮</span> をクリックするとメニューが開きます。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-n">3</div>
+          <div class="step-content">
+            <div class="step-title">「複製」を選択</div>
+            <p class="step-desc">「複製」をクリックすると、そのブロックのすぐ下にコピーが作成されます。</p>
+          </div>
+        </li>
+      </ul>
+      <div class="callout ok">
+        <span class="callout-ico">⌨️</span>
+        <div class="callout-body">
+          <strong>複数ブロックのコピー＆ペースト</strong>
+          <span>複数ブロックを選択した状態で <kbd>Ctrl</kbd>+<kbd>C</kbd> でコピー → 貼り付けたい位置でカーソルを合わせ <kbd>Shift</kbd>+<kbd>Ctrl</kbd>+<kbd>V</kbd> でブロックとして貼り付けができます。</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==============================
+     SECTION 10: SWELL独自ブロック
+     ============================== -->
+<div class="sec container" id="s11">
   <div class="sec-head swell-sec">
-    <div class="sec-num">💡</div>
+    <div class="sec-num">11</div>
     <div class="sec-title-wrap">
       <div class="sec-label">活用テクニック</div>
       <div class="sec-title">SWELL独自ブロックの活用</div>
@@ -1693,9 +2064,9 @@ kbd{
 <!-- ==============================
      SECTION 11: スライダー画像差し替え
      ============================== -->
-<div class="sec container" id="s11">
+<div class="sec container" id="s12">
   <div class="sec-head swell-sec">
-    <div class="sec-num">🖼</div>
+    <div class="sec-num">12</div>
     <div class="sec-title-wrap">
       <div class="sec-label">カスタマイザー操作 <span style="background:rgba(255,255,255,0.2);border-radius:4px;padding:1px 8px;font-size:11px;margin-left:4px;">SWELL</span></div>
       <div class="sec-title">トップページ スライダー画像の差し替え</div>
@@ -2002,7 +2373,7 @@ kbd{
           Q: 誤って公開してしまった記事を非公開にしたい
         </div>
         <div style="padding:12px 16px;font-size:14px;color:var(--gray-800);">
-          A: 記事の編集画面で右上の <span class="chip outline" style="font-size:11px;">下書きへ切り替え</span> ボタンをクリックしてください（本マニュアル「<a href="#s5" style="color:var(--blue);">Section 5</a>」参照）。
+          A: 記事の編集画面で右上の <span class="chip outline" style="font-size:11px;">下書きへ切り替え</span> ボタンをクリックしてください（本マニュアル「<a href="#s4" style="color:var(--blue);">Section 4</a>」参照）。
         </div>
       </div>
 
@@ -2035,6 +2406,32 @@ kbd{
   <p>WordPress 更新マニュアル｜SWELL テーマ対応 Gutenbergエディター版</p>
   <p style="margin-top:4px;">ご不明な点はいつでもご連絡ください。</p>
 </div>
+
+<!-- ページトップボタン -->
+<a href="#" class="pagetop" title="ページトップへ" aria-label="ページトップへ戻る">▲</a>
+
+<script>
+// スクロール量に応じてページトップボタンを表示/非表示
+(function(){
+  var btn = document.querySelector('.pagetop');
+  if(!btn) return;
+  btn.style.opacity = '0';
+  btn.style.pointerEvents = 'none';
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 300){
+      btn.style.opacity = '1';
+      btn.style.pointerEvents = 'auto';
+    } else {
+      btn.style.opacity = '0';
+      btn.style.pointerEvents = 'none';
+    }
+  }, {passive:true});
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+})();
+</script>
 
 </body>
 </html>
