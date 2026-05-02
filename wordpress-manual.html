@@ -116,6 +116,16 @@ body{
   border-bottom:1px solid var(--gray-100);
 }
 .toc-section:last-child{border-bottom:none;}
+/* Wide group: spans 2 outer-grid columns and arranges sections in 2 columns */
+@media(min-width:760px){
+  .toc-group--wide{grid-column:span 2;}
+  .toc-group--wide .toc-section-cols{
+    column-count:2;column-gap:0;column-rule:1px solid var(--gray-100);
+  }
+  .toc-group--wide .toc-section-cols .toc-section{
+    break-inside:avoid;
+  }
+}
 /* メイン項目 */
 .toc-item{
   display:flex;align-items:center;gap:10px;
@@ -468,7 +478,7 @@ kbd{
 
     <!-- ① はじめに -->
     <div class="toc-group">
-      <div class="toc-group-label">📌 ① はじめに</div>
+      <div class="toc-group-label">📌 はじめに</div>
 
       <div class="toc-section">
         <a class="toc-item" href="#s1"><span class="toc-num">1</span>ログイン方法</a>
@@ -481,11 +491,13 @@ kbd{
     </div>
 
     <!-- ② 新規記事の投稿 -->
-    <div class="toc-group">
-      <div class="toc-group-label">📝 ② 新規記事の投稿</div>
+    <div class="toc-group toc-group--wide">
+      <div class="toc-group-label">📝 新規記事の投稿</div>
+
+      <div class="toc-section-cols">
 
       <div class="toc-section">
-        <a class="toc-item" href="#s8"><span class="toc-num">1</span>新規記事の投稿（アイキャッチ画像の設定を含む）</a>
+        <a class="toc-item" href="#s8"><span class="toc-num">1</span>新規記事の投稿</a>
         <div class="toc-subs">
           <a class="toc-sub" href="#s8">タイトル・本文を入力する</a>
           <a class="toc-sub" href="#s8">⌨️ 改行は Shift+Enter を推奨</a>
@@ -537,11 +549,13 @@ kbd{
           <a class="toc-sub" href="#s10">📋 ブロックをコピー（複製）する</a>
         </div>
       </div>
+
+      </div>
     </div>
 
     <!-- ③ 記事の更新 -->
     <div class="toc-group">
-      <div class="toc-group-label" style="background:linear-gradient(90deg,#0369a1,#0ea5e9);">✏️ ③ 記事の更新</div>
+      <div class="toc-group-label" style="background:linear-gradient(90deg,#0369a1,#0ea5e9);">✏️ 記事の更新</div>
 
       <div class="toc-section">
         <a class="toc-item" href="#s2"><span class="toc-num">1</span>既存記事を開いて編集する</a>
@@ -563,7 +577,7 @@ kbd{
 
     <!-- ④ Q&A -->
     <div class="toc-group">
-      <div class="toc-group-label qa">❓ ④ トラブルシューティング</div>
+      <div class="toc-group-label qa">❓ トラブルシューティング</div>
 
       <div class="toc-section">
         <a class="toc-item" href="#qa"><span class="toc-num qa">Q</span>よくある質問（Q&amp;A）</a>
@@ -588,7 +602,7 @@ kbd{
   <div class="sec-head">
     <div class="sec-num">1</div>
     <div class="sec-title-wrap">
-      <div class="sec-label">① はじめに</div>
+      <div class="sec-label">はじめに</div>
       <div class="sec-title">ログイン方法</div>
     </div>
   </div>
@@ -656,8 +670,8 @@ kbd{
   <div class="sec-head">
     <div class="sec-num">1</div>
     <div class="sec-title-wrap">
-      <div class="sec-label">② 新規記事の投稿</div>
-      <div class="sec-title">新規記事の投稿（アイキャッチ画像の設定を含む）</div>
+      <div class="sec-label">新規記事の投稿</div>
+      <div class="sec-title">新規記事の投稿</div>
     </div>
   </div>
   <div class="sec-body">
@@ -829,59 +843,15 @@ kbd{
       <li class="step-item">
         <div class="step-n">7</div>
         <div class="step-content">
-          <div class="step-title">プレビューで確認する</div>
-          <p class="step-desc">右上の <span class="chip outline" style="font-size:11px;">プレビュー</span> をクリックすると、実際のサイトでどう見えるか確認できます。</p>
-        </div>
-      </li>
-      <li class="step-item">
-        <div class="step-n">8</div>
-        <div class="step-content">
-          <div class="step-title">「公開」ボタンをクリックして投稿完了</div>
-          <p class="step-desc">右上の <span class="chip green">公開</span> をクリック → 確認ダイアログで再度 <span class="chip green">公開</span> をクリックするとサイトに公開されます。</p>
-          <div class="callout ok">
-            <span class="callout-ico">✅</span>
+          <div class="step-title">アイキャッチ画像を設定する</div>
+          <p class="step-desc">記事の「顔」となるメイン画像を設定します。投稿一覧・SNSシェア・トップページなどに表示されるため、必ず設定することをおすすめします。</p>
+          <div class="callout info" style="margin-top:10px;">
+            <span class="callout-ico">📌</span>
             <div class="callout-body">
-              <strong>すぐに公開しない場合</strong>
-              <span><span class="chip outline" style="font-size:11px;">下書き保存</span> をクリックすれば、内容を保存したまま公開せずに一時保存できます。</span>
+              <strong>設定手順</strong>
+              <span>右サイドバーの「投稿」タブで「アイキャッチ画像」欄をクリック → 「アイキャッチ画像を設定」をクリック → メディアライブラリから画像を選択 → 右下の <span class="chip blue" style="font-size:11px;">アイキャッチ画像を設定</span> ボタンをクリック → 記事を「更新」または「公開」して保存します。</span>
             </div>
           </div>
-        </div>
-      </li>
-
-    </ul>
-
-    <hr class="divider">
-
-    <div class="sub">
-      <div class="sub-title">🖼️ アイキャッチ画像を設定する</div>
-    <div class="callout info">
-      <span class="callout-ico">ℹ️</span>
-      <div class="callout-body">
-        <strong>アイキャッチ画像とは？</strong>
-        <span>記事の「顔」となるメイン画像です。投稿一覧・SNSシェア時・トップページなどに表示されます。設定しないとSNSシェア時に画像が表示されないことがあるため、必ず設定することをおすすめします。</span>
-      </div>
-    </div>
-
-    <ul class="steps" style="margin-top:16px;">
-      <li class="step-item">
-        <div class="step-n">1</div>
-        <div class="step-content">
-          <div class="step-title">記事の編集画面で右サイドバーを表示する</div>
-          <p class="step-desc">右上の <span class="chip outline" style="font-size:11px;">⚙ 設定</span> アイコンをクリックしてサイドバーを表示します。</p>
-        </div>
-      </li>
-      <li class="step-item">
-        <div class="step-n">2</div>
-        <div class="step-content">
-          <div class="step-title">「投稿」タブを選択する</div>
-          <p class="step-desc">サイドバー上部の「投稿」タブが選択されていることを確認します（「ブロック」タブと間違えないように）。</p>
-        </div>
-      </li>
-      <li class="step-item">
-        <div class="step-n">3</div>
-        <div class="step-content">
-          <div class="step-title">「アイキャッチ画像」欄を開く</div>
-          <p class="step-desc">サイドバーを下にスクロールし「アイキャッチ画像」をクリックして展開します。</p>
           <div class="editor-mock" style="margin-top:10px;">
             <div style="display:flex;">
               <div style="flex:1;background:var(--gray-100);padding:14px;font-size:13px;color:var(--gray-400);">記事の編集エリア</div>
@@ -906,52 +876,45 @@ kbd{
               </div>
             </div>
           </div>
+          <div class="callout ok" style="margin-top:10px;">
+            <span class="callout-ico">🗑️</span>
+            <div class="callout-body">
+              <strong>削除するには</strong>
+              <span>サイドバーのアイキャッチ欄に表示されている画像のサムネイル下「アイキャッチ画像を削除」リンクをクリック → 「更新」で保存します。</span>
+            </div>
+          </div>
+          <div class="callout ok" style="margin-top:8px;">
+            <span class="callout-ico">💡</span>
+            <div class="callout-body">
+              <strong>推奨サイズ（SWELL）</strong>
+              <span>横 <strong>1200px × 縦 630px</strong>（比率 1.91:1）が一般的なOGP推奨サイズです。</span>
+            </div>
+          </div>
         </div>
       </li>
       <li class="step-item">
-        <div class="step-n">4</div>
+        <div class="step-n">8</div>
         <div class="step-content">
-          <div class="step-title">「アイキャッチ画像を設定」をクリックして画像を選ぶ</div>
-          <p class="step-desc">メディアライブラリが開きます。使いたい画像をクリックして選択し、右下の <span class="chip blue">アイキャッチ画像を設定</span> ボタンをクリックします。</p>
+          <div class="step-title">プレビューで確認する</div>
+          <p class="step-desc">右上の <span class="chip outline" style="font-size:11px;">プレビュー</span> をクリックすると、実際のサイトでどう見えるか確認できます。</p>
         </div>
       </li>
       <li class="step-item">
-        <div class="step-n">5</div>
+        <div class="step-n">9</div>
         <div class="step-content">
-          <div class="step-title">記事を「更新」または「公開」して保存</div>
-          <p class="step-desc">右上の <span class="chip green">更新</span>（または <span class="chip green">公開</span>）ボタンをクリックして保存します。</p>
+          <div class="step-title">「公開」ボタンをクリックして投稿完了</div>
+          <p class="step-desc">右上の <span class="chip green">公開</span> をクリック → 確認ダイアログで再度 <span class="chip green">公開</span> をクリックするとサイトに公開されます。</p>
+          <div class="callout ok">
+            <span class="callout-ico">✅</span>
+            <div class="callout-body">
+              <strong>すぐに公開しない場合</strong>
+              <span><span class="chip outline" style="font-size:11px;">下書き保存</span> をクリックすれば、内容を保存したまま公開せずに一時保存できます。</span>
+            </div>
+          </div>
         </div>
       </li>
+
     </ul>
-
-    <hr class="divider">
-
-    <div class="sub-title">🗑️ アイキャッチ画像を削除する</div>
-    <ul class="steps">
-      <li class="step-item">
-        <div class="step-n">1</div>
-        <div class="step-content">
-          <div class="step-title">設定済み画像のサムネイル下に「アイキャッチ画像を削除」が表示される</div>
-          <p class="step-desc">サイドバーのアイキャッチ欄に現在の画像が表示されている場合、その下に「アイキャッチ画像を削除」リンクが表示されます。</p>
-        </div>
-      </li>
-      <li class="step-item">
-        <div class="step-n">2</div>
-        <div class="step-content">
-          <div class="step-title">クリックして削除 → 「更新」で保存</div>
-        </div>
-      </li>
-    </ul>
-
-    <div class="callout ok">
-      <span class="callout-ico">💡</span>
-      <div class="callout-body">
-        <strong>推奨サイズ（SWELL）</strong>
-        <span>横 <strong>1200px × 縦 630px</strong>（比率 1.91:1）が一般的なOGP推奨サイズです。SWELLではアイキャッチをコンテンツ上部に大きく表示するオシャレなスタイルも設定できます（カスタマイザーで変更可）。</span>
-      </div>
-    </div>
-
-    </div>
 
   </div>
 </div>
@@ -963,7 +926,7 @@ kbd{
   <div class="sec-head">
     <div class="sec-num">2</div>
     <div class="sec-title-wrap">
-      <div class="sec-label">② 新規記事の投稿</div>
+      <div class="sec-label">新規記事の投稿</div>
       <div class="sec-title">リンクの挿入</div>
     </div>
   </div>
@@ -1045,7 +1008,7 @@ kbd{
   <div class="sec-head">
     <div class="sec-num">3</div>
     <div class="sec-title-wrap">
-      <div class="sec-label">② 新規記事の投稿</div>
+      <div class="sec-label">新規記事の投稿</div>
       <div class="sec-title">テキスト編集・ツールバーの使い方</div>
     </div>
   </div>
@@ -1362,7 +1325,7 @@ kbd{
   <div class="sec-head">
     <div class="sec-num">4</div>
     <div class="sec-title-wrap">
-      <div class="sec-label">② 新規記事の投稿</div>
+      <div class="sec-label">新規記事の投稿</div>
       <div class="sec-title">画像のアップロード・差し替え</div>
     </div>
   </div>
@@ -1483,7 +1446,7 @@ kbd{
   <div class="sec-head">
     <div class="sec-num">5</div>
     <div class="sec-title-wrap">
-      <div class="sec-label">② 新規記事の投稿</div>
+      <div class="sec-label">新規記事の投稿</div>
       <div class="sec-title">動画の挿入</div>
     </div>
   </div>
@@ -1613,7 +1576,7 @@ kbd{
   <div class="sec-head">
     <div class="sec-num">6</div>
     <div class="sec-title-wrap">
-      <div class="sec-label">② 新規記事の投稿</div>
+      <div class="sec-label">新規記事の投稿</div>
       <div class="sec-title">ブロックの移動とコピー</div>
     </div>
   </div>
@@ -1696,7 +1659,7 @@ kbd{
   <div class="sec-head">
     <div class="sec-num">1</div>
     <div class="sec-title-wrap">
-      <div class="sec-label">③ 記事の更新</div>
+      <div class="sec-label">記事の更新</div>
       <div class="sec-title">既存記事を開いて編集する（投稿一覧から編集・削除）</div>
     </div>
   </div>
@@ -1825,7 +1788,7 @@ kbd{
   <div class="sec-head">
     <div class="sec-num">2</div>
     <div class="sec-title-wrap">
-      <div class="sec-label">③ 記事の更新</div>
+      <div class="sec-label">記事の更新</div>
       <div class="sec-title">公開中の記事を下書きに変更</div>
     </div>
   </div>
@@ -1902,7 +1865,7 @@ kbd{
   <div class="sec-head" style="background:linear-gradient(90deg,#0f5132,#198754);">
     <div class="sec-num">Q</div>
     <div class="sec-title-wrap">
-      <div class="sec-label">④ トラブルシューティング</div>
+      <div class="sec-label">トラブルシューティング</div>
       <div class="sec-title">よくある質問（Q&amp;A）</div>
     </div>
   </div>
